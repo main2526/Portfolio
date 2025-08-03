@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -11,7 +12,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "BootsDev-X  | FullStack Developer",
+  title: "BootsDev-X | FullStack Developer",
   description:
     "Portfolio profesional de Johanny A. Rodriguez, desarrollador Full Stack especializado en React, Next.js, Node.js y tecnologías modernas.",
   keywords:
@@ -31,11 +32,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${montserrat.className}  antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${montserrat.className} bg-black`}
+      >
         <NextIntlClientProvider>
-          {children}
-          <ScrollToTopButton />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <ScrollToTopButton />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

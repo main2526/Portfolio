@@ -5,9 +5,9 @@
 
   "AboutMe": {
     "About": "About Me",
-    "text": "As a Full Stack Developer with a strong background in software engineering, I am dedicated to building elegant digital solutions that combine robust functionality with intuitive design. I have over three years of experience developing modern web applications, where I have cultivated a deep understanding of best practices in software architecture and results-driven development.",
+    "text": "From a young age, I was fascinated by building computers and understanding how they worked inside. That curiosity led me to discover the world of programming, and that’s when I truly got excited: the idea of creating things from scratch, solving problems, and watching something I wrote come to life completely captivated me. Today, as a Full Stack developer with a background in software engineering, I carry that same passion, building digital solutions that not only work well but are also easy and intuitive to use. With over two years of experience developing modern web applications, I keep learning and growing to make every project better than the last.",
 
-    "pros": "Clean code is simple and direct. It reads like well-written prose."
+    "pros": "Programming is turning dreams into code that changes the world."
   },
 
   "Skills": {
@@ -53,8 +53,8 @@
     "GitHub": "GitHub Repository",
     "WhatsApp": "WhatsApp Bussines",
     "SendMe": "Send Me a Message",
-    "Name": "Name",
-    "YourName": "Your Name",
+    "Name": "Business (User)",
+    "YourName": "Your business or user name",
     "YourEmail": "your@email.com",
     "Subject": "Subject",
     "SubjectInput": "Subject of the message",

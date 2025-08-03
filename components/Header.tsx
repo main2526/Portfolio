@@ -1,21 +1,32 @@
 import { useTranslations } from "next-intl";
 import { FaUserTie } from "react-icons/fa";
 import LanguageSwitcher from "@/components/languageSwitcher";
+
 export default function Header() {
   const t = useTranslations("Profile");
-  return (
-    <header className="text-center py-16 px-12 bg-slate-800 text-white relative">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600"></div>
 
-      <LanguageSwitcher />
-      <div className="profile-img w-40 h-40 rounded-full mx-auto mb-8 bg-slate-700 flex items-center justify-center text-6xl text-yellow-500 border-4 border-yellow-500 shadow-lg">
+  return (
+    <header className="relative text-center py-12 px-4 sm:py-16 sm:px-12 bg-slate-800 dark:bg-slate-900 text-white dark:text-yellow-400">
+      {/* Línea superior decorativa */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600" />
+
+      {/* Contenedor del idioma */}
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
+        <LanguageSwitcher />
+      </div>
+
+      {/* Imagen de perfil */}
+      <div className="profile-img w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 sm:mb-8 bg-slate-700 dark:bg-slate-800 flex items-center justify-center text-5xl sm:text-6xl text-yellow-500 dark:text-yellow-400 border-4 border-yellow-500 dark:border-yellow-400 shadow-lg">
         <FaUserTie />
       </div>
 
-      <h1 className="name text-5xl font-bold mb-2 text-white tracking-wide font-serif">
+      {/* Nombre */}
+      <h1 className="name text-3xl sm:text-5xl font-bold mb-2 text-white dark:text-yellow-300 tracking-wide font-serif">
         Johanny A. Rodriguez
       </h1>
-      <p className="title text-xl text-yellow-500 font-light italic tracking-wide">
+
+      {/* Título */}
+      <p className="title text-lg sm:text-xl text-yellow-500 dark:text-yellow-400 font-light italic tracking-wide">
         {t("Developer")}
       </p>
     </header>

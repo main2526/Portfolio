@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import {
   FaJs,
@@ -42,7 +43,7 @@ const allSkills = [
   {
     name: "Next.js",
     icon: SiNextdotjs,
-    color: "text-black",
+    color: "text-black dark:text-white",
     category: "frontend",
   },
   {
@@ -79,15 +80,15 @@ const allSkills = [
   {
     name: "Prisma",
     icon: SiPrisma,
-    color: "text-slate-700",
+    color: "text-slate-700 dark:text-slate-300",
     category: "backend",
   },
   { name: "Git", icon: FaGitAlt, color: "text-orange-500", category: "tool" },
-  { name: "GitHub", icon: FaGithub, color: "text-black", category: "tool" },
+  { name: "GitHub", icon: FaGithub, color: "text-black dark:text-white", category: "tool" },
   {
     name: "Unity Engine",
     icon: FaUnity,
-    color: "text-slate-700",
+    color: "text-slate-700 dark:text-slate-300",
     category: "tool",
   },
 ];
@@ -98,6 +99,7 @@ const filters = [
   { value: "backend" },
   { value: "tool" },
 ];
+
 export default function Skills() {
   const [selected, setSelected] = useState("all");
   const t = useTranslations("Skills");
@@ -109,7 +111,7 @@ export default function Skills() {
 
   return (
     <section className="section mb-16">
-      <h2 className="section-title text-3xl font-bold mb-8 text-slate-800 text-center relative pb-4 font-serif">
+      <h2 className="section-title text-3xl font-bold mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4 font-serif">
         {t("title")}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
       </h2>
@@ -120,10 +122,10 @@ export default function Skills() {
           <button
             key={filter.value}
             onClick={() => setSelected(filter.value)}
-            className={`px-4 py-1 text-sm  border-2 transition-all duration-200 ${
+            className={`px-4 py-1 text-sm border-2 transition-all duration-200  font-semibold ${
               selected === filter.value
                 ? "bg-yellow-500 text-white border-yellow-500"
-                : "border-gray-300 text-slate-700 hover:border-yellow-500"
+                : "border-gray-300 text-slate-700  dark:text-slate-300 hover:border-yellow-500"
             }`}
           >
             {t(filter.value)}
@@ -135,12 +137,12 @@ export default function Skills() {
         {filteredSkills.map((skill, index) => (
           <div
             key={index}
-            className="skill-item text-center p-2 bg-white border-2 border-gray-200 transition-all duration-300 hover:border-yellow-500 hover:shadow-lg group"
+            className="skill-item text-center p-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600  transition-all duration-300 dark:hover:border-yellow-500  hover:border-yellow-500 hover:shadow-lg group"
           >
             <skill.icon
               className={`skill-icon text-6xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
             />
-            <div className="skill-name font-semibold text-slate-800 text-sm tracking-wide">
+            <div className="skill-name font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-wide">
               {skill.name}
             </div>
           </div>

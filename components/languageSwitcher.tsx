@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
-
+import { ModeToggle } from "./ModdeToggle";
 const locales = ["en", "es"];
 
 export default function LanguageSwitcher() {
@@ -46,8 +46,11 @@ export default function LanguageSwitcher() {
   }, [pathname]);
 
   return (
-    <nav className="fixed z-50 top-4 right-4 bg-black backdrop-blur-md border border-gray-200 dark:border-zinc-700 px-2 py-1 shadow-lg transition-all ">
+    <nav className="fixed z-50 top-4 right-4 p-2 bg-black backdrop-blur-md border border-gray-200 dark:border-zinc-700 px-2 py-1 shadow-lg transition-all ">
       <div className="flex items-center gap-1">
+        <div>
+          <ModeToggle />
+        </div>
         {locales.map((locale) => (
           <button
             key={locale}
