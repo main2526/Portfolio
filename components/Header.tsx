@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl";
 import { FaUserTie } from "react-icons/fa";
 import LanguageSwitcher from "@/components/languageSwitcher";
-
+import Link from "next/link";
+import CvModal from "@/components/CvModal";
 export default function Header() {
   const t = useTranslations("Profile");
 
@@ -29,6 +30,11 @@ export default function Header() {
       <p className="title text-lg sm:text-xl text-yellow-500 dark:text-yellow-400 font-light italic tracking-wide">
         {t("Developer")}
       </p>
+
+      {/* Botón de Descargar CV */}
+      <div className="inline-block mt-6 px-6 py-2 border border-yellow-500 dark:text-white hover:bg-yellow-500  hover:text-slate-900 dark:hover:text-slate-900 transition-colors duration-300 font-medium ">
+        <CvModal />
+      </div>
     </header>
   );
 }
