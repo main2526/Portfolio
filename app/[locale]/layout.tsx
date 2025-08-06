@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin"],
-  weight: "500",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -33,9 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${montserrat.className} bg-black`}
-      >
+      <body className={`${inter.className} bg-black antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"

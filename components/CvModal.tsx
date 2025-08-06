@@ -59,7 +59,7 @@ export default function CvToast() {
           onClick={() => setShow(false)}
         >
           <div
-            className="relative w-full max-w-6xl shadow-lg border border-black bg-white/90 dark:bg-blue-900/90 backdrop-blur-md overflow-hidden transition-all duration-300"
+            className="relative w-full max-w-6xl shadow-lg border border-black bg-white/90 backdrop-blur-md overflow-hidden transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Botón cerrar */}

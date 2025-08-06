@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   FaJs,
   FaReact,
@@ -10,6 +10,8 @@ import {
   FaGitAlt,
   FaGithub,
   FaUnity,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -86,7 +88,7 @@ const allSkills = [
   { name: "Git", icon: FaGitAlt, color: "text-orange-500", category: "tool" },
   { name: "GitHub", icon: FaGithub, color: "text-black dark:text-white", category: "tool" },
   {
-    name: "Unity Engine",
+    name: "Unity",
     icon: FaUnity,
     color: "text-slate-700 dark:text-slate-300",
     category: "tool",
@@ -109,6 +111,23 @@ export default function Skills() {
       ? allSkills
       : allSkills.filter((skill) => skill.category === selected);
 
+  // Ref para el scroll del carrusel
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollAmount = 200; // px a desplazar por clic
+
+  function scrollLeft() {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    }
+  }
+
+  function scrollRight() {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  }
+
   return (
     <section className="section mb-16">
       <h2 className="section-title text-3xl font-bold mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4 font-serif">
@@ -122,10 +141,10 @@ export default function Skills() {
           <button
             key={filter.value}
             onClick={() => setSelected(filter.value)}
-            className={`px-4 py-1 text-sm border-2 transition-all duration-200  font-semibold ${
+            className={`px-4 py-1 text-sm border-2 transition-all duration-200 ${
               selected === filter.value
                 ? "bg-yellow-500 text-white border-yellow-500"
-                : "border-gray-300 text-slate-700  dark:text-slate-300 hover:border-yellow-500"
+                : "border-gray-300 text-slate-700 dark:text-slate-300 hover:border-yellow-500"
             }`}
           >
             {t(filter.value)}
@@ -133,16 +152,57 @@ export default function Skills() {
         ))}
       </div>
 
-      <div className="skills-grid grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 mt-8">
+      {/* CARRUSEL en MOBILE */}
+      <div className="relative block sm:hidden">
+        {/* Botones de scroll */}
+        <button
+          onClick={scrollLeft}
+          aria-label="Scroll left"
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-yellow-500 text-white p-2 rounded-full shadow-md z-10"
+        >
+          <FaChevronLeft />
+        </button>
+
+        <button
+          onClick={scrollRight}
+          aria-label="Scroll right"
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-yellow-500 text-white p-2 rounded-full shadow-md z-10"
+        >
+          <FaChevronRight />
+        </button>
+
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-auto scrollbar-none space-x-6 px-12"
+          style={{ scrollBehavior: "smooth" }}
+        >
+          {filteredSkills.map((skill, index) => (
+            <div
+              key={index}
+              className="skill-item flex flex-col items-center justify-center mb-4 p-5 min-w-[120px] bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 transition-all duration-300 dark:hover:border-yellow-500 hover:border-yellow-500 hover:shadow-lg group aspect-square flex-shrink-0"
+            >
+              <skill.icon
+                className={`skill-icon text-5xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
+              />
+              <div className="skill-name font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
+                {skill.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* GRID en escritorio */}
+      <div className="hidden sm:grid skills-grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 mt-8">
         {filteredSkills.map((skill, index) => (
           <div
             key={index}
-            className="skill-item text-center p-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600  transition-all duration-300 dark:hover:border-yellow-500  hover:border-yellow-500 hover:shadow-lg group"
+            className="skill-item flex flex-col items-center justify-center p-5 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 transition-all duration-300 dark:hover:border-yellow-500 hover:border-yellow-500 hover:shadow-lg group aspect-square"
           >
             <skill.icon
               className={`skill-icon text-6xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
             />
-            <div className="skill-name font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-wide">
+            <div className="skill-name font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
               {skill.name}
             </div>
           </div>

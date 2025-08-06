@@ -1,4 +1,3 @@
-// app/api/contact/route.ts
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
