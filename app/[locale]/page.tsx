@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Ornament from "@/components/Ornament";
 
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
@@ -12,6 +13,7 @@ export default function Home() {
         <div className="portfolio-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg  overflow-hidden transition-colors duration-300 mt-7">
           {/* Header (ya es responsive) */}
           <Header />
+      
 
           {/* Contenido */}
           <div className="content px-4 sm:px-8 md:px-12 py-10 space-y-16">

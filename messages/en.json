@@ -4,6 +4,10 @@
     "DownloadCV": "Preview CV"
   },
 
+  "Available": {
+    "ava": "Available to work"
+  },
+
   "AboutMe": {
     "About": "About Me",
     "text": "From a young age, I was fascinated by building computers and understanding how they worked inside. That curiosity led me to discover the world of programming, and that’s when I truly got excited: the idea of creating things from scratch, solving problems, and watching something I wrote come to life completely captivated me. Today, as a Full Stack developer with a background in software engineering, I carry that same passion, building digital solutions that not only work well but are also easy and intuitive to use. With over two years of experience developing modern web applications, I keep learning and growing to make every project better than the last.",
