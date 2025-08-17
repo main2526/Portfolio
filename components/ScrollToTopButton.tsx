@@ -25,7 +25,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-2 z-50 p-3  shadow-md transition-all duration-300  ease-in-out transform ${
+      className={`fixed bottom-6 right-2 z-50 p-3  shadow-md transition-all duration-300  cursor-pointer ease-in-out transform ${
         visible
           ? "opacity-100 bg-yellow-500 hover:bg-yellow-600 text-white"
           : "opacity-0 pointer-events-none"

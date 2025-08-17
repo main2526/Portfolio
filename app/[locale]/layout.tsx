@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans} from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -33,7 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-black antialiased`}>
+         <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={` google-sans bg-black antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"

@@ -50,7 +50,12 @@ export default function CvToast() {
   return (
     <>
       {/* Botón */}
-      <button onClick={handleOpen}>{t("DownloadCV")}</button>
+      <button
+        onClick={handleOpen}
+        className="inline-block mt-6 px-6 py-2 border border-yellow-500 dark:text-white hover:bg-yellow-500 hover:text-slate-900 dark:hover:text-slate-900 cursor-pointer transition-colors duration-300"
+      >
+        {t("DownloadCV")}
+      </button>
 
       {/* Modal solo visible en desktop */}
       {show && (
@@ -75,7 +80,7 @@ export default function CvToast() {
             <div className="w-full h-[85vh]">
               <iframe
                 src="/cv.pdf"
-                className="w-full h-full border-0"
+                className="w-full h-full border-0 "
                 title="CV"
               />
             </div>

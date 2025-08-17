@@ -56,7 +56,7 @@ export default function LanguageSwitcher() {
             key={locale}
             onClick={() => changeLocale(locale)}
             disabled={locale === currentLocale}
-            className={`px-3 py-1 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2
+            className={`px-3 py-1 text-sm transition-all duration-200 focus:outline-none 
               ${
                 locale === currentLocale
                   ? "bg-orange-500 dark:text-black text-white"

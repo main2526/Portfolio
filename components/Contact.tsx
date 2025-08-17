@@ -93,7 +93,7 @@ export default function Contact() {
 
   return (
     <section className="section mb-16">
-      <h2 className="section-title text-3xl font-bold mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4 font-serif">
+      <h2 className="section-title text-3xl mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4">
         {tContact("v")}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
       </h2>
@@ -121,7 +121,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-info">
-                  <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-1 text-lg tracking-wide font-serif">
+                  <h4 className="text-slate-800 dark:text-slate-200 mb-1 text-lg tracking-wide">
                     {t(contact.title)}
                   </h4>
                 </div>
@@ -132,7 +132,7 @@ export default function Contact() {
 
         {/* Formulario de Contacto */}
         <div>
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-6 font-serif">
+          <h3 className="text-2xl text-slate-800 dark:text-slate-200 mb-6">
             {t("SendMe")}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -216,7 +216,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full cursor-pointer bg-gray-900 dark:bg-yellow-500 dark:text-slate-800 text-white py-4 px-8 font-semibold text-lg tracking-wide transition-all duration-300
+              className="w-full cursor-pointer bg-gray-900 dark:bg-yellow-500 dark:text-slate-800 text-white py-4 px-8 hover:dark:bg-yellow-400 text-lg tracking-wide transition-all duration-300
                 hover:shadow-lg
                 hover:border-yellow-500
                 dark:hover:border-yellow-500
@@ -236,7 +236,7 @@ export default function Contact() {
             </button>
 
             {submitMessage && (
-              <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 text-center font-medium transition-colors duration-300">
+              <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 text-center  transition-colors duration-300">
                 {submitMessage}
               </div>
             )}

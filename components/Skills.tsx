@@ -130,7 +130,7 @@ export default function Skills() {
 
   return (
     <section className="section mb-16">
-      <h2 className="section-title text-3xl font-bold mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4 font-serif">
+      <h2 className="section-title text-3xl  mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4">
         {t("title")}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
       </h2>
@@ -144,7 +144,7 @@ export default function Skills() {
             className={`px-4 py-1 text-sm border-2 transition-all duration-200 ${
               selected === filter.value
                 ? "bg-yellow-500 text-white border-yellow-500"
-                : "border-gray-300 text-slate-700 dark:text-slate-300 hover:border-yellow-500"
+                : "border-gray-300 text-slate-700 dark:text-slate-300 hover:border-yellow-500 cursor-pointer"
             }`}
           >
             {t(filter.value)}
@@ -184,7 +184,7 @@ export default function Skills() {
               <skill.icon
                 className={`skill-icon text-5xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
               />
-              <div className="skill-name font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
+              <div className="  text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
                 {skill.name}
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function Skills() {
             <skill.icon
               className={`skill-icon text-6xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
             />
-            <div className="skill-name font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
+            <div className="skill-name text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
               {skill.name}
             </div>
           </div>
