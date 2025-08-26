@@ -21,15 +21,15 @@ const projects = [
       "TypeScript",
       "Api DeepSeek",
     ],
-    github: "https://github.com/main2526/chatbot-api-key",
-    demo: "https://bootschatbot.vercel.app/",
+    github: "https://github.com/main2526/bootsportal.git",
+    demo: "https://bootsportal.vercel.app/",
   },
   {
     titleKey: "chatbotAI.name",
     descriptionKey: "chatbotAI.description",
     technologies: ["React", "Next JS", "TypeScript", "Framer Motion"],
-    github: "https://github.com/main2526/current-stock",
-    demo: "https://bloxstock.vercel.app/",
+    github: "hhttps://github.com/main2526/chatbot-api-key.git",
+    demo: "https://bootschatbot.vercel.app/",
   },
 ];
 
