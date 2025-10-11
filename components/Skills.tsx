@@ -78,7 +78,6 @@ const allSkills = [
     color: "text-blue-700",
     category: "backend",
   },
-  { name: "MySQL", icon: SiMysql, color: "text-blue-800", category: "backend" },
   {
     name: "Prisma",
     icon: SiPrisma,
@@ -86,11 +85,10 @@ const allSkills = [
     category: "backend",
   },
   { name: "Git", icon: FaGitAlt, color: "text-orange-500", category: "tool" },
-  { name: "GitHub", icon: FaGithub, color: "text-black dark:text-white", category: "tool" },
   {
-    name: "Unity",
-    icon: FaUnity,
-    color: "text-slate-700 dark:text-slate-300",
+    name: "GitHub",
+    icon: FaGithub,
+    color: "text-black dark:text-white",
     category: "tool",
   },
 ];
