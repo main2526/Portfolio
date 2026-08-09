@@ -16,11 +16,13 @@ export default function CvModal() {
   useEffect(() => {
     if (!show) return;
     const previousOverflow = document.body.style.overflow;
+    document.documentElement.setAttribute("data-cv-open", "true");
     document.body.style.overflow = "hidden";
     closeButtonRef.current?.focus();
     const handleKeyDown = (event: KeyboardEvent) => event.key === "Escape" && setShow(false);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
+      document.documentElement.removeAttribute("data-cv-open");
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
     };

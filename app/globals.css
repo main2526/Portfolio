@@ -160,6 +160,10 @@
     border-color: rgb(255 255 255 / 24%);
   }
 
+  html[data-cv-open="true"] .liquid-glass-control {
+    display: none;
+  }
+
   .signature-name {
     font-family: "Snell Roundhand", "Segoe Script", "Brush Script MT", "Apple Chancery", cursive;
     font-weight: 400;
