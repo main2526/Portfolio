@@ -9,8 +9,8 @@
   "Available": { "ava": "Available for work" },
   "AboutMe": {
     "About": "About me",
-    "text": "From a young age, I was fascinated by building computers and understanding how they worked inside. That curiosity led me to programming, where the idea of creating things from scratch, solving problems, and watching something I wrote come to life completely captivated me. Today, as a Full Stack developer with a background in software engineering, I carry that same passion into building digital solutions that work beautifully and feel intuitive to use. With more than two years of experience developing modern web applications, I keep learning and growing to make every project better than the last.",
-    "pros": "Programming turns dreams into code that can change the world."
+    "text": "I am a Full Stack developer who turns ideas into fast, clear, and intuitive web experiences. I like to build up products from scratch, hunt down bugs, and clean up code until every detail falls into place. With over two years of experience, I keep learning, building, and solving problems without sacrificing design or performance.",
+    "pros": "If production drops dead, I follow the logs, bring it back, and move on; the server can keep the drama."
   },
   "Skills": {
     "title": "Technical skills",
