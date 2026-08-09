@@ -1,13 +1,8 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useState } from "react";
-import {
-  FaLinkedinIn,
-  FaGithub,
-  FaWhatsapp,
-  FaPaperPlane,
-} from "react-icons/fa";
+import { useLocale, useTranslations } from "next-intl";
+import { FaGithub, FaLinkedinIn, FaPaperPlane, FaWhatsapp } from "react-icons/fa";
 
 interface FormData {
   empresa: string;
@@ -15,234 +10,118 @@ interface FormData {
   subject: string;
   message: string;
 }
+
+const initialForm: FormData = { empresa: "", email: "", subject: "", message: "" };
+
+const contactInfo = [
+  { icon: FaLinkedinIn, title: "LinkedIn", link: "https://www.linkedin.com/in/bootsx", color: "bg-blue-600", accent: "text-blue-300" },
+  { icon: FaGithub, title: "GitHub", link: "https://github.com/main2526", color: "bg-slate-700", accent: "text-slate-300" },
+  {
+    icon: FaWhatsapp,
+    title: "WhatsApp",
+    link: "https://api.whatsapp.com/send/?phone=18295914469&text=Hola%2C+vi+tu+portafolio+y+quiero+hablar+contigo.+%C2%BFDisponible%3F&type=phone_number&app_absent=0",
+    color: "bg-emerald-600",
+    accent: "text-emerald-300",
+  },
+];
+
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
-    empresa: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const t = useTranslations("ContactMe");
   const tContact = useTranslations("Con");
+  const locale = useLocale();
+  const intro = locale === "es"
+    ? {
+        eyebrow: "Abierto a nuevas ideas",
+        title: "¿Tienes una idea? Hagámosla realidad.",
+        text: "Cuéntame un poco sobre lo que quieres construir. Te responderé con próximos pasos claros y pensados para tu proyecto.",
+      }
+    : {
+        eyebrow: "Open to possibilities",
+        title: "Have an idea? Let's make it real.",
+        text: "Tell me a little about what you are building. I will get back to you with thoughtful next steps.",
+      };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setIsSubmitting(true);
-    setSubmitMessage("");
+    setStatus(null);
 
     try {
-      const res = await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          empresa: formData.empresa,
-          email: formData.email,
-          message: `${formData.subject}\n\n${formData.message}`,
-        }),
+        body: JSON.stringify({ empresa: formData.empresa, email: formData.email, message: `${formData.subject}\n\n${formData.message}` }),
       });
-
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || "Error al enviar el mensaje.");
-
-      setSubmitMessage(
-        "✅ Message sent successfully! I will respond to you soon."
-      );
-      setFormData({ empresa: "", email: "", subject: "", message: "" });
-
-      setTimeout(() => setSubmitMessage(""), 5000);
-    } catch (err: any) {
-      setSubmitMessage(`❌ Error: ${err.message}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(typeof data.error === "string" ? data.error : t("SendError"));
+      setStatus({ type: "success", text: t("SendSuccess") });
+      setFormData(initialForm);
+    } catch {
+      setStatus({ type: "error", text: t("SendError") });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const contactInfo = [
-    {
-      icon: FaLinkedinIn,
-      title: "LinkedIn",
-      link: "https://www.linkedin.com/in/bootsx",
-      bgColor: "bg-blue-600",
-    },
-    {
-      icon: FaGithub,
-      title: "GitHub",
-      link: "https://github.com/main2526",
-      bgColor: "bg-gray-800",
-    },
-    {
-      icon: FaWhatsapp,
-      title: "WhatsApp",
-      link: "https://api.whatsapp.com/send/?phone=18494795388&text=Hola%2C+vi+tu+portafolio+y+quiero+hablar+contigo.+%C2%BFDisponible%3F&type=phone_number&app_absent=0",
-      bgColor: "bg-green-600",
-    },
-  ];
+  const inputClass = "focus-ring w-full rounded-xl border border-slate-700 bg-slate-950/45 px-4 py-3 text-base text-white placeholder:text-slate-500 transition focus:border-amber-400";
 
   return (
-    <section className="section mb-16">
-      <h2 className="section-title text-3xl mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4">
-        {tContact("v")}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
-      </h2>
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title" className="section-heading">{tContact("v")}</h2>
 
-      <div className="grid lg:grid-cols-2 gap-12 mt-8">
-        {/* Información de Contacto */}
-        <div>
-          <div className="contact-grid grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
-            {contactInfo.map((contact, index) => (
-              <a
-                key={index}
-                href={contact.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`contact-item flex items-center gap-6 p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 transition-all duration-300
-                  hover:border-yellow-500 hover:shadow-lg group
-                  dark:hover:border-yellow-500`}
-              >
-                <div
-                  className={`contact-icon min-w-16 h-16 flex items-center justify-center text-2xl text-white ${contact.bgColor} border-2 border-yellow-500 transition-all duration-300
-                    group-hover:bg-yellow-500 group-hover:text-slate-800 group-hover:scale-110
-                    dark:hover:border-yellow-500 dark:group-hover:text-slate-800`}
-                >
-                  <contact.icon />
-                </div>
+      <div className="relative mt-10 overflow-hidden rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 p-5 shadow-xl shadow-slate-950/10 sm:p-8 lg:p-10">
+        <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-20 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
 
-                <div className="contact-info">
-                  <h4 className="text-slate-800 dark:text-slate-200 mb-1 text-lg tracking-wide">
-                    {t(contact.title)}
-                  </h4>
-                </div>
-              </a>
-            ))}
+        <div className="relative grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-12">
+          <div className="flex flex-col justify-center">
+            <span className="text-xs font-bold uppercase tracking-[0.24em] text-amber-400">{intro.eyebrow}</span>
+            <h3 className="mt-3 max-w-sm text-2xl font-semibold leading-tight text-white sm:text-3xl">{intro.title}</h3>
+            <p className="mt-4 max-w-md text-sm leading-7 text-slate-300 sm:text-base">{intro.text}</p>
+
+            <div className="mt-7 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              {contactInfo.map((contact) => {
+                const Icon = contact.icon;
+                return (
+                  <a key={contact.title} href={contact.link} target="_blank" rel="noopener noreferrer" className="focus-ring group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.045] p-3 transition-colors hover:border-amber-400/50 hover:bg-white/[0.08]">
+                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg text-white ${contact.color}`}><Icon aria-hidden="true" /></span>
+                    <span className="min-w-0 truncate text-sm font-semibold text-white">{t(contact.title)}</span>
+                  </a>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Formulario de Contacto */}
-        <div>
-          <h3 className="text-2xl text-slate-800 dark:text-slate-200 mb-6">
-            {t("SendMe")}
-          </h3>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label
-                  htmlFor="empresa"
-                  className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 tracking-wide"
-                >
-                  {t("Name")}
-                </label>
-                <input
-                  type="text"
-                  id="empresa"
-                  name="empresa"
-                  value={formData.empresa}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={`${t("YourName")}`}
-                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 dark:focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-slate-800 dark:text-slate-200 placeholder-gray-400 focus:border-yellow-500 dark:placeholder-gray-500"
-                />
+          <div className="rounded-2xl border border-white/10 bg-slate-950/35 p-5 shadow-inner sm:p-7">
+            <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">{t("SendMe")}</h3>
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field label={t("Name")} htmlFor="empresa"><input className={inputClass} id="empresa" name="empresa" value={formData.empresa} onChange={handleChange} required autoComplete="organization" placeholder={t("YourName")} /></Field>
+                <Field label="Email" htmlFor="email"><input className={inputClass} type="email" id="email" name="email" value={formData.email} onChange={handleChange} required autoComplete="email" placeholder={t("YourEmail")} /></Field>
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 tracking-wide"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={t("YourEmail")}
-                  className="w-full dark:focus:border-yellow-500  px-4 py-3 border-2 border-gray-200 dark:border-gray-600 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-slate-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-gray-500"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="subject"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 tracking-wide"
-              >
-                {t("Subject")}
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleInputChange}
-                required
-                placeholder={`${t("SubjectInput")}`}
-                className="w-full dark:focus:border-yellow-500 px-4 py-3 border-2 border-gray-200 dark:border-gray-600 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-slate-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-gray-500"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 tracking-wide"
-              >
-                {t("Message")}
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-                rows={6}
-                placeholder={`${t("MessageInput")}`}
-                className="w-full dark:focus:border-yellow-500 px-4 py-3 border-2 border-gray-200 dark:border-gray-600 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-slate-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full cursor-pointer bg-gray-900 dark:bg-yellow-500 dark:text-slate-800 text-white py-4 px-8 hover:dark:bg-yellow-400 text-lg tracking-wide transition-all duration-300
-                hover:shadow-lg
-                hover:border-yellow-500
-                dark:hover:border-yellow-500
-                disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  {t("SendIngMessage")}
-                </>
-              ) : (
-                <>
-                  <FaPaperPlane />
-                  {t("SendMessage")}
-                </>
-              )}
-            </button>
-
-            {submitMessage && (
-              <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 text-center  transition-colors duration-300">
-                {submitMessage}
-              </div>
-            )}
-          </form>
+              <Field label={t("Subject")} htmlFor="subject"><input className={inputClass} id="subject" name="subject" value={formData.subject} onChange={handleChange} required placeholder={t("SubjectInput")} /></Field>
+              <Field label={t("Message")} htmlFor="message"><textarea className={`${inputClass} min-h-32 resize-y`} id="message" name="message" value={formData.message} onChange={handleChange} required rows={4} placeholder={t("MessageInput")} /></Field>
+              <button type="submit" disabled={isSubmitting} className="focus-ring flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-amber-400 px-6 py-3.5 text-base font-semibold text-slate-950 transition-colors hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60">
+                {isSubmitting ? <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" /> : <FaPaperPlane aria-hidden="true" />}
+                {isSubmitting ? t("SendIngMessage") : t("SendMessage")}
+              </button>
+              {status && <p role="status" className={`rounded-xl border px-4 py-3 text-center text-sm ${status.type === "success" ? "border-emerald-700 bg-emerald-950/50 text-emerald-300" : "border-red-800 bg-red-950/50 text-red-300"}`}>{status.text}</p>}
+            </form>
+          </div>
         </div>
       </div>
     </section>
   );
+}
+
+function Field({ label, htmlFor, children }: { label: string; htmlFor: string; children: React.ReactNode }) {
+  return <div><label htmlFor={htmlFor} className="mb-2 block text-sm font-semibold text-slate-200">{label}</label>{children}</div>;
 }

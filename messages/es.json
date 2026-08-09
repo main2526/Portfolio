@@ -1,69 +1,54 @@
 {
   "Profile": {
     "Developer": "Desarrollador Full Stack",
-    "DownloadCV": "Demostración CV"
+    "DownloadCV": "Ver currículum",
+    "CVTitle": "Currículum de Johanny Rodriguez",
+    "DownloadFile": "Descargar currículum",
+    "Close": "Cerrar"
   },
-
-  "Available": {
-    "ava": "Disponible para trabajar"
-  },
-
+  "Available": { "ava": "Disponible para trabajar" },
   "AboutMe": {
-    "About": "Sobre Mí",
-    "text": "Desde muy joven, me fascinaba armar computadoras y entender cómo funcionaban por dentro. Esa curiosidad me llevó a descubrir el mundo de la programación, y fue entonces cuando realmente me emociono la idea de crear cosas desde cero, resolver problemas y ver cómo algo que escribía cobraba vida me atrapó por completo. Hoy, como desarrollador Full Stack con formación en ingeniería de software, mantengo esa misma pasión, construyendo soluciones digitales que no solo funcionan bien, sino que también son fáciles e intuitivas de usar. Con más de dos años de experiencia desarrollando aplicaciones web modernas, continúo aprendiendo y creciendo para hacer que cada proyecto sea mejor que el anterior.",
+    "About": "Sobre mí",
+    "text": "Desde muy joven, me fascinaba armar computadoras y entender cómo funcionaban por dentro. Esa curiosidad me llevó a descubrir el mundo de la programación, y fue entonces cuando realmente me emocionó la idea de crear cosas desde cero, resolver problemas y ver cómo algo que escribía cobraba vida. Hoy, como desarrollador Full Stack con formación en ingeniería de software, mantengo esa misma pasión: construir soluciones digitales que no solo funcionan bien, sino que también son fáciles e intuitivas de usar. Con más de dos años de experiencia desarrollando aplicaciones web modernas, continúo aprendiendo y creciendo para hacer que cada proyecto sea mejor que el anterior.",
     "pros": "Programar es transformar sueños en código que cambia el mundo."
   },
-
   "Skills": {
-    "title": "Competencias Técnicas",
+    "title": "Competencias técnicas",
     "all": "Todas",
     "frontend": "Frontend",
     "backend": "Backend",
-    "tool": "Herramientas"
+    "tool": "Herramientas",
+    "filterLabel": "Filtrar competencias",
+    "scrollLeft": "Ver competencias anteriores",
+    "scrollRight": "Ver más competencias"
   },
-
-  "TitleP": {
-    "Pr": "Proyectos Destacados"
-  },
-
+  "TitleP": { "Pr": "Proyectos destacados" },
   "Projects": {
-    "swiftStake": {
-      "name": "Swift Stake",
-      "description": "Swift Stake es una plataforma de staking rápida y segura que permite a los usuarios participar en protocolos de finanzas descentralizadas (DeFi). El proyecto integra APIs en tiempo real para ofrecer oportunidades y recompensas actualizadas. Con un enfoque en la experiencia del usuario y la seguridad, Swift Stake simplifica la obtención de ingresos pasivos mediante tecnología blockchain."
-    },
-
-    "landingTurtle": {
-      "name": "Landing Turtle",
-      "description": "Landing Turtle es una página de aterrizaje animada y visualmente atractiva creada para mostrar técnicas modernas de diseño web. Utilizando Next.js, Tailwind CSS y Framer Motion, el proyecto demuestra animaciones suaves, diseños responsivos y elementos creativos de interfaz de usuario. Sirve como plantilla para startups y portafolios personales que buscan una primera impresión memorable."
-    },
-
-    "chatbotAI": {
-      "name": "Chatbot AI",
-      "description": "Chatbot AI es un asistente conversacional inteligente impulsado por la API DeepSeek y Next.js. El chatbot puede responder preguntas, proporcionar recomendaciones y automatizar tareas para los usuarios. Con un enfoque en la comprensión del lenguaje natural y una interfaz fácil de usar, Chatbot AI lleva el poder de la inteligencia artificial a las interacciones cotidianas."
-    }
+    "swiftStake": { "name": "Swift Stake", "description": "Swift Stake es una plataforma de staking rápida y segura que permite a los usuarios participar en protocolos de finanzas descentralizadas (DeFi). El proyecto integra APIs en tiempo real para ofrecer oportunidades y recompensas actualizadas. Con un enfoque en la experiencia de usuario y la seguridad, simplifica la obtención de ingresos pasivos mediante tecnología blockchain." },
+    "landingTurtle": { "name": "Landing Turtle", "description": "Landing Turtle es una página de aterrizaje animada y visualmente atractiva creada para mostrar técnicas modernas de diseño web. Con Next.js, Tailwind CSS y Framer Motion, demuestra animaciones suaves, diseños responsivos y elementos creativos de interfaz. Sirve como plantilla para startups y portfolios personales que buscan una primera impresión memorable." },
+    "chatbotAI": { "name": "Chatbot AI", "description": "Chatbot AI es un asistente conversacional inteligente impulsado por la API de DeepSeek y Next.js. Puede responder preguntas, proporcionar recomendaciones y automatizar tareas. Su enfoque en la comprensión del lenguaje natural y una interfaz fácil de usar lleva el poder de la inteligencia artificial a las interacciones cotidianas." }
   },
-
-  "Watch": {
-    "Preview": "Demostración",
-    "Github": "Github Project"
-  },
-
-  "Con": {
-    "v": "Información de Contacto"
-  },
-
+  "Watch": { "Preview": "Ver demo", "Github": "Ver código" },
+  "Con": { "v": "Hablemos" },
   "ContactMe": {
-    "LinkedIn": "LinkedIn Profesional",
-    "GitHub": "Repositorio en GitHub",
-    "WhatsApp": "WhatsApp Negocios",
-    "Name": "Negocio (Usuario)",
+    "Eyebrow": "Abierto a nuevas ideas",
+    "IntroTitle": "¿Tienes una idea? Hagámosla realidad.",
+    "IntroText": "Cuéntame un poco sobre lo que quieres construir. Te responderé con próximos pasos claros y pensados para tu proyecto.",
+    "Connect": "Conecta conmigo",
+    "LinkedIn": "LinkedIn profesional",
+    "GitHub": "Perfil de GitHub",
+    "WhatsApp": "WhatsApp",
+    "Name": "Nombre o empresa",
     "SendMe": "Envíame un mensaje",
-    "YourName": "Tu empresa o tu nombre ",
+    "YourName": "Tu nombre o empresa",
     "YourEmail": "tu@email.com",
     "Subject": "Asunto",
-    "SubjectInput": "Asunto del mensaje",
+    "SubjectInput": "¿En qué puedo ayudarte?",
     "Message": "Mensaje",
-    "MessageInput": "Escribe tu mensaje aquí",
-    "SendMessage": "Enviar mensaje"
+    "MessageInput": "Cuéntame sobre tu proyecto",
+    "SendMessage": "Enviar mensaje",
+    "SendIngMessage": "Enviando…",
+    "SendSuccess": "Mensaje enviado. Te responderé pronto.",
+    "SendError": "No se pudo enviar el mensaje. Inténtalo de nuevo."
   }
 }

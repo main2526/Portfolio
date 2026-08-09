@@ -4,31 +4,16 @@ export default function About() {
   const t = useTranslations("AboutMe");
 
   return (
-    <section className="mb-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl  mb-10 text-slate-800 dark:text-white text-center relative pb-4">
-          {t("About")}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
-        </h2>
-
-        <div>
-          <p className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-10  max-w-none sm:max-w-prose mx-auto text-justify sm:text-left">
-            {t("text")}
-          </p>
-        </div>
-
-        <div className="relative px-6 sm:px-8 my-12">
-          <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg italic leading-relaxed  mx-auto text-center sm:text-center">
-            <span className="text-yellow-500 text-4xl leading-none align-top">
-              “
-            </span>
-            {t("pros")}
-            <span className="text-yellow-500 text-4xl leading-none align-top">
-              ”
-            </span>
-          </p>
-        </div>
-      </div>
+    <section aria-labelledby="about-title" className="mx-auto max-w-4xl">
+      <h2 id="about-title" className="section-heading">
+        {t("About")}
+      </h2>
+      <p className="mx-auto mt-9 max-w-3xl text-pretty text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+        {t("text")}
+      </p>
+      <blockquote className="mx-auto mt-9 max-w-2xl border-l-2 border-amber-400 bg-amber-50/70 px-5 py-4 text-center text-base italic leading-7 text-slate-600 sm:text-lg dark:bg-amber-400/5 dark:text-slate-300">
+        “{t("pros")}”
+      </blockquote>
     </section>
   );
 }

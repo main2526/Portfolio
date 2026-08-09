@@ -1,92 +1,64 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { X } from "lucide-react";
 
-export default function CvToast() {
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useTranslations } from "next-intl";
+import { Download, ExternalLink, X } from "lucide-react";
+
+export default function CvModal() {
   const [show, setShow] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const t = useTranslations("Profile");
 
-  // Detectar si es móvil
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  // Desactiva scroll
   useEffect(() => {
-    document.body.style.overflow = show ? "hidden" : "";
+    if (!show) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => event.key === "Escape" && setShow(false);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [show]);
 
-  // ESC para cerrar
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setShow(false);
-    };
-    if (show) document.addEventListener("keydown", handleEsc);
-    return () => document.removeEventListener("keydown", handleEsc);
-  }, [show]);
-
-  const handleOpen = () => {
-    if (isMobile) {
-      const link = document.createElement("a");
-      link.href = "/cv.pdf";
-      link.download = "CV.pdf";
-      link.target = "_blank";
-      link.click();
-    } else {
-      setShow(true);
-    }
-  };
+  const modal = show && mounted
+    ? createPortal(
+        <div role="dialog" aria-modal="true" aria-label={t("CVTitle")} className="fixed inset-0 z-[9999] flex flex-col bg-slate-950">
+          <div className="flex min-h-16 shrink-0 items-center justify-between border-b border-white/10 bg-slate-900 px-4 text-white sm:px-6">
+            <div className="min-w-0">
+              <span className="block truncate text-sm font-semibold sm:text-base">{t("CVTitle")}</span>
+              <span className="hidden text-xs text-slate-400 sm:block">PDF</span>
+            </div>
+            <div className="ml-4 flex items-center gap-2">
+              <a href="/cv.pdf" download="Johanny-Rodriguez-CV.pdf" className="focus-ring inline-flex h-10 items-center gap-2 rounded-xl border border-white/10 px-3 text-sm font-semibold text-slate-200 transition-colors hover:border-amber-400 hover:text-amber-400" aria-label={t("DownloadFile")}>
+                <Download className="h-4 w-4" aria-hidden="true" />
+                <span className="hidden sm:inline">{t("DownloadFile")}</span>
+              </a>
+              <button ref={closeButtonRef} type="button" onClick={() => setShow(false)} className="focus-ring flex h-10 w-10 items-center justify-center rounded-xl bg-amber-400 text-slate-950 transition-colors hover:bg-amber-300" aria-label={t("Close")}>
+                <X className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+          <div className="min-h-0 flex-1 bg-slate-800 p-0 sm:p-3">
+            <iframe src="/cv.pdf#toolbar=0&navpanes=0&view=FitH" className="h-full w-full border-0 bg-white sm:rounded-xl" title={t("CVTitle")} />
+          </div>
+        </div>,
+        document.body
+      )
+    : null;
 
   return (
     <>
-      {/* Botón */}
-      <button
-        onClick={handleOpen}
-        className="inline-block mt-6 px-6 py-2 border border-yellow-500 dark:text-white hover:bg-yellow-500 hover:text-slate-900 dark:hover:text-slate-900 cursor-pointer transition-colors duration-300"
-      >
+      <button type="button" onClick={() => setShow(true)} className="focus-ring mt-7 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-amber-400 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-400 hover:text-slate-950">
+        <ExternalLink className="h-4 w-4" aria-hidden="true" />
         {t("DownloadCV")}
       </button>
-
-      {/* Modal solo visible en desktop */}
-      {show && (
-        <div
-          className="fixed inset-0 z-50 hidden sm:flex items-center h-screen justify-center bg-blue-950/60 backdrop-blur-sm px-4"
-          onClick={() => setShow(false)}
-        >
-          <div
-            className="relative w-full max-w-6xl shadow-lg border border-black bg-white/90 backdrop-blur-md overflow-hidden transition-all duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Botón cerrar */}
-            <button
-              onClick={() => setShow(false)}
-              className="absolute top-4 right-4 w-8 h-8 bg-secondary text-primary flex items-center justify-center shadow transition"
-              title="Cerrar"
-            >
-              <X size={22} strokeWidth={2} />
-            </button>
-
-            {/* PDF */}
-            <div className="w-full h-[85vh]">
-              <iframe
-                src="/cv.pdf"
-                className="w-full h-full border-0 "
-                title="CV"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      {modal}
     </>
   );
 }

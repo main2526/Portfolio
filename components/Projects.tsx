@@ -1,6 +1,6 @@
 "use client";
 
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
 const projects = [
@@ -14,87 +14,54 @@ const projects = [
   {
     titleKey: "landingTurtle.name",
     descriptionKey: "landingTurtle.description",
-    technologies: [
-      "React",
-      "Next js",
-      "PrismaORM",
-      "TypeScript",
-      "Api DeepSeek",
-    ],
+    technologies: ["React", "Next.js", "Prisma ORM", "TypeScript", "DeepSeek API"],
     github: "https://github.com/main2526/bootsportal.git",
     demo: "https://bootsportal.vercel.app/",
   },
   {
     titleKey: "chatbotAI.name",
     descriptionKey: "chatbotAI.description",
-    technologies: ["React", "Next JS", "TypeScript", "Framer Motion"],
-    github: "hhttps://github.com/main2526/chatbot-api-key.git",
+    technologies: ["React", "Next.js", "TypeScript", "Framer Motion"],
+    github: "https://github.com/main2526/chatbot-api-key.git",
     demo: "https://bootschatbot.vercel.app/",
   },
 ];
 
 export default function Projects() {
   const t = useTranslations("Projects");
-  const tPr = useTranslations("TitleP");
-  const tShow = useTranslations("Watch");
+  const tTitle = useTranslations("TitleP");
+  const tWatch = useTranslations("Watch");
 
   return (
-    <section className="section mb-16">
-      <h2 className="section-title text-3xl mb-8 text-slate-800 dark:text-slate-200 text-center relative  pb-4">
-        {tPr("Pr")}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
-      </h2>
-
-      <div className="projects-grid space-y-12 mt-8">
+    <section aria-labelledby="projects-title">
+      <h2 id="projects-title" className="section-heading">{tTitle("Pr")}</h2>
+      <div className="mt-9 grid gap-6 md:grid-cols-2">
         {projects.map((project, index) => (
-          <div
-            key={index}
-            className="project-card bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 p-6 sm:p-10 transition-all duration-300 hover:border-yellow-500 hover:shadow-xl relative group"
-          >
-            <div className="absolute top-0 left-0 right-0 h-1 bg-yellow-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></div>
-
-            <h3 className="project-title whitespace-nowrap text-2xl sm:text-3xl text-slate-800 dark:text-slate-200 mb-4 tracking-wide ">
-              {t(project.titleKey)}
-            </h3>
-
-            <p className="project-description text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-6 text-justify break-words">
-              {t(project.descriptionKey)}
-            </p>
-
-            <div className="project-tech flex flex-wrap gap-3 mb-8">
-              {project.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="tech-tag bg-slate-800 dark:bg-slate-700 text-white dark:text-gray-200 px-4 py-2 text-sm font-medium tracking-wide border border-slate-800 dark:border-slate-700 transition-all duration-300 whitespace-nowrap"
-                >
-                  {tech}
-                </span>
+          <article key={project.titleKey} className={`surface-card group relative flex flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-xl sm:p-8 ${index === 0 ? "md:col-span-2" : ""}`}>
+            <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-orange-500 transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-amber-600 dark:text-amber-400">0{index + 1}</span>
+            <h3 className="break-words text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-white">{t(project.titleKey)}</h3>
+            <p className="mt-4 flex-1 text-base leading-7 text-slate-600 dark:text-slate-300">{t(project.descriptionKey)}</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span key={tech} className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">{tech}</span>
               ))}
             </div>
-
-            <div className="project-links flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={project.github}
-                className="project-link flex items-center gap-3 text-slate-800 dark:text-slate-200  text-base py-3 px-6 border-2 border-slate-800 dark:border-slate-200 transition-all duration-300 hover:bg-slate-800 hover:text-white dark:hover:bg-white dark:hover:text-slate-800 hover:shadow-lg whitespace-nowrap"
-              >
-                <FaGithub />
-                {tShow("Github")}
-              </a>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={project.demo}
-                className="project-link flex items-center gap-3 text-slate-800 dark:text-slate-200 text-base py-3 px-6 border-2 border-slate-800 dark:border-slate-200 transition-all duration-300 hover:bg-slate-800 hover:text-white dark:hover:bg-white dark:hover:text-slate-800 hover:shadow-lg whitespace-nowrap"
-              >
-                <FaExternalLinkAlt />
-                {tShow("Preview")}
-              </a>
+            <div className="mt-7 flex flex-col gap-3 xs:flex-row sm:flex-row">
+              <ProjectLink href={project.github} label={tWatch("Github")} icon={<FaGithub />} />
+              <ProjectLink href={project.demo} label={tWatch("Preview")} icon={<FaExternalLinkAlt />} primary />
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>
+  );
+}
+
+function ProjectLink({ href, label, icon, primary = false }: { href: string; label: string; icon: React.ReactNode; primary?: boolean }) {
+  return (
+    <a target="_blank" rel="noopener noreferrer" href={href} className={`focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition ${primary ? "border-amber-500 bg-amber-500 text-slate-950 hover:bg-amber-400" : "border-slate-300 text-slate-800 hover:border-slate-900 hover:bg-slate-900 hover:text-white dark:border-slate-600 dark:text-slate-200 dark:hover:border-white dark:hover:bg-white dark:hover:text-slate-900"}`}>
+      {icon}<span>{label}</span>
+    </a>
   );
 }

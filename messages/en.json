@@ -1,71 +1,54 @@
 {
   "Profile": {
     "Developer": "Full Stack Developer",
-    "DownloadCV": "Preview CV"
+    "DownloadCV": "View résumé",
+    "CVTitle": "Johanny Rodriguez's résumé",
+    "DownloadFile": "Download résumé",
+    "Close": "Close"
   },
-
-  "Available": {
-    "ava": "Available to work"
-  },
-
+  "Available": { "ava": "Available for work" },
   "AboutMe": {
-    "About": "About Me",
-    "text": "From a young age, I was fascinated by building computers and understanding how they worked inside. That curiosity led me to discover the world of programming, and that’s when I truly got excited: the idea of creating things from scratch, solving problems, and watching something I wrote come to life completely captivated me. Today, as a Full Stack developer with a background in software engineering, I carry that same passion, building digital solutions that not only work well but are also easy and intuitive to use. With over two years of experience developing modern web applications, I keep learning and growing to make every project better than the last.",
-
-    "pros": "Programming is turning dreams into code that changes the world."
+    "About": "About me",
+    "text": "From a young age, I was fascinated by building computers and understanding how they worked inside. That curiosity led me to programming, where the idea of creating things from scratch, solving problems, and watching something I wrote come to life completely captivated me. Today, as a Full Stack developer with a background in software engineering, I carry that same passion into building digital solutions that work beautifully and feel intuitive to use. With more than two years of experience developing modern web applications, I keep learning and growing to make every project better than the last.",
+    "pros": "Programming turns dreams into code that can change the world."
   },
-
   "Skills": {
-    "title": "Technical Competencies",
+    "title": "Technical skills",
     "all": "All",
     "frontend": "Frontend",
     "backend": "Backend",
-    "tool": "Tools"
+    "tool": "Tools",
+    "filterLabel": "Filter skills",
+    "scrollLeft": "View previous skills",
+    "scrollRight": "View more skills"
   },
-
-  "TitleP": {
-    "Pr": "Highlighted Projects"
-  },
-
+  "TitleP": { "Pr": "Featured projects" },
   "Projects": {
-    "swiftStake": {
-      "name": "Swift Stake",
-      "description": "Swift Stake is a fast and secure staking platform that enables users to participate in decentralized finance (DeFi) protocols. The project integrates real-time APIs to provide updated opportunities and rewards. With a focus on user experience and security, Swift Stake simplifies earning passive income through blockchain technology."
-    },
-
-    "landingTurtle": {
-      "name": "Landing Turtle",
-      "description": "Landing Turtle is an animated and visually engaging landing page created to showcase modern web design techniques. Utilizing Next.js, Tailwind CSS, and Framer Motion, the project demonstrates smooth animations, responsive layouts, and creative UI elements. It serves as a template for startups and personal portfolios seeking a memorable first impression."
-    },
-
-    "chatbotAI": {
-      "name": "Chatbot AI",
-      "description": "Chatbot AI is an intelligent conversational assistant powered by the DeepSeek API and Next.js. The chatbot can answer questions, provide recommendations, and automate tasks for users. With a focus on natural language understanding and a user-friendly interface, Chatbot AI brings the power of artificial intelligence to everyday interactions."
-    }
+    "swiftStake": { "name": "Swift Stake", "description": "Swift Stake is a fast, secure staking platform that enables users to participate in decentralized finance (DeFi) protocols. The project integrates real-time APIs to provide current opportunities and rewards. With a focus on user experience and security, it simplifies earning passive income through blockchain technology." },
+    "landingTurtle": { "name": "Landing Turtle", "description": "Landing Turtle is an animated, visually engaging landing page built to showcase modern web design techniques. Using Next.js, Tailwind CSS, and Framer Motion, it demonstrates smooth animations, responsive layouts, and creative interface elements. It works as a template for startups and personal portfolios seeking a memorable first impression." },
+    "chatbotAI": { "name": "Chatbot AI", "description": "Chatbot AI is an intelligent conversational assistant powered by the DeepSeek API and Next.js. It can answer questions, provide recommendations, and automate tasks. Its focus on natural-language understanding and a friendly interface brings the power of artificial intelligence to everyday interactions." }
   },
-
-  "Watch": {
-    "Preview": "Preview",
-    "Github": "Github "
-  },
-
-  "Con": {
-    "v": "Contact Information"
-  },
-
+  "Watch": { "Preview": "Live demo", "Github": "View code" },
+  "Con": { "v": "Let's talk" },
   "ContactMe": {
+    "Eyebrow": "Open to possibilities",
+    "IntroTitle": "Have an idea? Let's make it real.",
+    "IntroText": "Tell me a little about what you are building. I will get back to you with thoughtful next steps.",
+    "Connect": "Connect with me",
     "LinkedIn": "Professional LinkedIn",
-    "GitHub": "GitHub Repository",
-    "WhatsApp": "WhatsApp Bussines",
-    "SendMe": "Send Me a Message",
-    "Name": "Business(User)",
-    "YourName": "Your business or username",
-    "YourEmail": "your@email.com",
+    "GitHub": "GitHub profile",
+    "WhatsApp": "WhatsApp",
+    "SendMe": "Send me a message",
+    "Name": "Name or business",
+    "YourName": "Your name or business",
+    "YourEmail": "you@email.com",
     "Subject": "Subject",
-    "SubjectInput": "Subject of the message",
+    "SubjectInput": "How can I help?",
     "Message": "Message",
-    "MessageInput": "Write your message here",
-    "SendMessage": "Send Message",
-    "SendIngMessage": "Sending..."
+    "MessageInput": "Tell me about your project",
+    "SendMessage": "Send message",
+    "SendIngMessage": "Sending…",
+    "SendSuccess": "Message sent. I'll get back to you soon.",
+    "SendError": "The message could not be sent. Please try again."
   }
 }

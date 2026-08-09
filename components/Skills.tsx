@@ -1,211 +1,106 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import {
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaHtml5,
+  FaChevronLeft,
+  FaChevronRight,
   FaCss3Alt,
   FaGitAlt,
   FaGithub,
-  FaUnity,
-  FaChevronLeft,
-  FaChevronRight,
+  FaHtml5,
+  FaJs,
+  FaNodeJs,
+  FaReact,
 } from "react-icons/fa";
 import {
-  SiTypescript,
-  SiNextdotjs,
   SiMysql,
+  SiNextdotjs,
   SiPostgresql,
-  SiTailwindcss,
   SiPrisma,
+  SiTailwindcss,
+  SiTypescript,
 } from "react-icons/si";
 import { useTranslations } from "next-intl";
 
 const allSkills = [
-  {
-    name: "JavaScript",
-    icon: FaJs,
-    color: "text-yellow-400",
-    category: "frontend",
-  },
-  {
-    name: "TypeScript",
-    icon: SiTypescript,
-    color: "text-blue-600",
-    category: "frontend",
-  },
-  {
-    name: "React",
-    icon: FaReact,
-    color: "text-cyan-400",
-    category: "frontend",
-  },
-  {
-    name: "Next.js",
-    icon: SiNextdotjs,
-    color: "text-black dark:text-white",
-    category: "frontend",
-  },
-  {
-    name: "HTML5",
-    icon: FaHtml5,
-    color: "text-orange-600",
-    category: "frontend",
-  },
-  {
-    name: "CSS3",
-    icon: FaCss3Alt,
-    color: "text-blue-500",
-    category: "frontend",
-  },
-  {
-    name: "Tailwind",
-    icon: SiTailwindcss,
-    color: "text-cyan-500",
-    category: "frontend",
-  },
-  {
-    name: "Node.js",
-    icon: FaNodeJs,
-    color: "text-green-600",
-    category: "backend",
-  },
-  {
-    name: "PostgreSQL",
-    icon: SiPostgresql,
-    color: "text-blue-700",
-    category: "backend",
-  },
-  {
-    name: "Prisma",
-    icon: SiPrisma,
-    color: "text-slate-700 dark:text-slate-300",
-    category: "backend",
-  },
+  { name: "JavaScript", icon: FaJs, color: "text-yellow-400", category: "frontend" },
+  { name: "TypeScript", icon: SiTypescript, color: "text-blue-500", category: "frontend" },
+  { name: "React", icon: FaReact, color: "text-cyan-400", category: "frontend" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-slate-950 dark:text-white", category: "frontend" },
+  { name: "HTML5", icon: FaHtml5, color: "text-orange-600", category: "frontend" },
+  { name: "CSS3", icon: FaCss3Alt, color: "text-blue-500", category: "frontend" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-500", category: "frontend" },
+  { name: "Node.js", icon: FaNodeJs, color: "text-green-600", category: "backend" },
+  { name: "MySQL", icon: SiMysql, color: "text-sky-600", category: "backend" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700 dark:text-blue-400", category: "backend" },
+  { name: "Prisma", icon: SiPrisma, color: "text-slate-700 dark:text-slate-200", category: "backend" },
   { name: "Git", icon: FaGitAlt, color: "text-orange-500", category: "tool" },
-  {
-    name: "GitHub",
-    icon: FaGithub,
-    color: "text-black dark:text-white",
-    category: "tool",
-  },
+  { name: "GitHub", icon: FaGithub, color: "text-slate-950 dark:text-white", category: "tool" },
 ];
 
-const filters = [
-  { value: "all" },
-  { value: "frontend" },
-  { value: "backend" },
-  { value: "tool" },
-];
+const filters = ["all", "frontend", "backend", "tool"] as const;
 
 export default function Skills() {
-  const [selected, setSelected] = useState("all");
-  const t = useTranslations("Skills");
-
-  const filteredSkills =
-    selected === "all"
-      ? allSkills
-      : allSkills.filter((skill) => skill.category === selected);
-
-  // Ref para el scroll del carrusel
+  const [selected, setSelected] = useState<(typeof filters)[number]>("all");
   const carouselRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Skills");
+  const filteredSkills = selected === "all" ? allSkills : allSkills.filter((skill) => skill.category === selected);
 
-  const scrollAmount = 200; // px a desplazar por clic
-
-  function scrollLeft() {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    }
-  }
-
-  function scrollRight() {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  }
+  const scroll = (direction: number) => {
+    carouselRef.current?.scrollBy({ left: direction * 180, behavior: "smooth" });
+  };
 
   return (
-    <section className="section mb-16">
-      <h2 className="section-title text-3xl  mb-8 text-slate-800 dark:text-slate-200 text-center relative pb-4">
-        {t("title")}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-yellow-500"></div>
-      </h2>
+    <section aria-labelledby="skills-title">
+      <h2 id="skills-title" className="section-heading">{t("title")}</h2>
 
-      {/* Filtro */}
-      <div className="flex justify-center flex-wrap gap-4 mb-8">
+      <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3" role="group" aria-label={t("filterLabel")}>
         {filters.map((filter) => (
           <button
-            key={filter.value}
-            onClick={() => setSelected(filter.value)}
-            className={`px-4 py-1 text-sm border-2 transition-all duration-200 ${
-              selected === filter.value
-                ? "bg-yellow-500 text-white border-yellow-500"
-                : "border-gray-300 text-slate-700 dark:text-slate-300 hover:border-yellow-500 cursor-pointer"
+            key={filter}
+            type="button"
+            onClick={() => setSelected(filter)}
+            aria-pressed={selected === filter}
+            className={`focus-ring rounded-full border px-4 py-2 text-sm font-medium transition ${
+              selected === filter
+                ? "border-amber-500 bg-amber-500 text-slate-950 shadow-sm"
+                : "border-slate-300 bg-white text-slate-700 hover:border-amber-500 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-amber-400 dark:hover:text-white"
             }`}
           >
-            {t(filter.value)}
+            {t(filter)}
           </button>
         ))}
       </div>
 
-      {/* CARRUSEL en MOBILE */}
-      <div className="relative block sm:hidden">
-        {/* Botones de scroll */}
-        <button
-          onClick={scrollLeft}
-          aria-label="Scroll left"
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-yellow-500 text-white p-2 rounded-full shadow-md z-10"
-        >
-          <FaChevronLeft />
+      <div className="relative mt-8 sm:hidden">
+        <button type="button" onClick={() => scroll(-1)} aria-label={t("scrollLeft")} className="focus-ring absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-slate-900 p-3 text-amber-400 shadow-lg dark:bg-amber-400 dark:text-slate-950">
+          <FaChevronLeft aria-hidden="true" />
         </button>
-
-        <button
-          onClick={scrollRight}
-          aria-label="Scroll right"
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-yellow-500 text-white p-2 rounded-full shadow-md z-10"
-        >
-          <FaChevronRight />
+        <button type="button" onClick={() => scroll(1)} aria-label={t("scrollRight")} className="focus-ring absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-slate-900 p-3 text-amber-400 shadow-lg dark:bg-amber-400 dark:text-slate-950">
+          <FaChevronRight aria-hidden="true" />
         </button>
-
-        <div
-          ref={carouselRef}
-          className="flex overflow-x-auto scrollbar-none space-x-6 px-12"
-          style={{ scrollBehavior: "smooth" }}
-        >
-          {filteredSkills.map((skill, index) => (
-            <div
-              key={index}
-              className="skill-item flex flex-col items-center justify-center mb-4 p-5 min-w-[120px] bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 transition-all duration-300 dark:hover:border-yellow-500 hover:border-yellow-500 hover:shadow-lg group aspect-square flex-shrink-0"
-            >
-              <skill.icon
-                className={`skill-icon text-5xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
-              />
-              <div className="  text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
-                {skill.name}
-              </div>
-            </div>
+        <div ref={carouselRef} className="scrollbar-none flex snap-x snap-mandatory gap-4 overflow-x-auto px-12 pb-2">
+          {filteredSkills.map((skill) => (
+            <SkillCard key={skill.name} skill={skill} />
           ))}
         </div>
       </div>
 
-      {/* GRID en escritorio */}
-      <div className="hidden sm:grid skills-grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 mt-8">
-        {filteredSkills.map((skill, index) => (
-          <div
-            key={index}
-            className="skill-item flex flex-col items-center justify-center p-5 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 transition-all duration-300 dark:hover:border-yellow-500 hover:border-yellow-500 hover:shadow-lg group aspect-square"
-          >
-            <skill.icon
-              className={`skill-icon text-6xl mb-4 mx-auto transition-transform duration-300 ${skill.color}`}
-            />
-            <div className="skill-name text-slate-800 dark:text-slate-200 text-sm tracking-wide text-center">
-              {skill.name}
-            </div>
-          </div>
+      <div className="mt-9 hidden grid-cols-2 gap-4 sm:grid md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7">
+        {filteredSkills.map((skill) => (
+          <SkillCard key={skill.name} skill={skill} />
         ))}
       </div>
     </section>
+  );
+}
+
+function SkillCard({ skill }: { skill: (typeof allSkills)[number] }) {
+  const Icon = skill.icon;
+  return (
+    <div className="surface-card flex aspect-square min-w-32 snap-center flex-col items-center justify-center p-4 sm:min-w-0">
+      <Icon className={`mb-3 text-4xl ${skill.color}`} aria-hidden="true" />
+      <span className="text-center text-sm font-medium text-slate-700 dark:text-slate-200">{skill.name}</span>
+    </div>
   );
 }

@@ -7,11 +7,11 @@ import Ornament from "@/components/Ornament";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
-        <div className="portfolio-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg  overflow-hidden transition-colors duration-300 mt-7">
+    <main className="min-h-screen bg-slate-100 py-3 transition-colors sm:py-8 dark:bg-slate-950">
+      <div className="mx-auto w-full max-w-6xl px-3 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 sm:rounded-3xl dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20">
           <Header />
-          <div className="content px-4 sm:px-8 md:px-12 py-10 space-y-16">
+          <div className="space-y-16 px-4 py-14 sm:space-y-20 sm:px-8 sm:py-20 md:px-12 lg:px-16">
             <About />
             <Skills />
             <Ornament />
@@ -21,6 +21,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

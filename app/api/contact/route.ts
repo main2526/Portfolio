@@ -1,60 +1,36 @@
-import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[character] ?? character);
 
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const { empresa, email, message } = await req.json();
+    const body = await request.json();
+    const empresa = typeof body.empresa === "string" ? body.empresa.trim().slice(0, 120) : "";
+    const email = typeof body.email === "string" ? body.email.trim().slice(0, 254) : "";
+    const message = typeof body.message === "string" ? body.message.trim().slice(0, 5000) : "";
 
-    if (!empresa || !email || !message) {
-      return NextResponse.json(
-        { error: "All fields are required." },
-        { status: 400 }
-      );
+    if (!empresa || !emailPattern.test(email) || !message) {
+      return NextResponse.json({ error: "Invalid form data." }, { status: 400 });
+    }
+    if (!process.env.RESEND_API_KEY || !process.env.EMAIL_TO) {
+      return NextResponse.json({ error: "Contact service is not configured." }, { status: 503 });
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: "BootsDev-X <onboarding@resend.dev>",
-      to: [process.env.EMAIL_TO ?? ""],
-      subject: `New Message from ${empresa}`,
-      html: `
-      <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; background-color: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
-        <h2 style="color: #111827; font-size: 24px; margin-bottom: 20px;">📩 New message from your portfolio</h2>
-
-        <table style="width: 100%; font-size: 16px; color: #374151;">
-        <tr>
-          <td style="font-weight: bold; padding: 8px 0;">Business:</td>
-          <td>${empresa}</td>
-        </tr>
-        <tr>
-          <td style="font-weight: bold; padding: 8px 0;">Email:</td>
-          <td>${email}</td>
-        </tr>
-        <tr>
-          <td style="font-weight: bold; padding: 8px 0; vertical-align: top;">Message:</td>
-          <td style="white-space: pre-line;">${message}</td>
-        </tr>
-        </table>
-
-        <hr style="margin: 30px 0; border: none; border-top: 1px solid #d1d5db;" />
-
-        <p style="font-size: 14px; color: #6b7280;">This message was sent from the contact form on your website.</p>
-      </div>
-      `,
+      to: [process.env.EMAIL_TO],
+      replyTo: email,
+      subject: `New portfolio message from ${empresa}`,
+      html: `<div style="font-family:Arial,sans-serif;padding:24px;max-width:600px;background:#f8fafc;border:1px solid #e2e8f0"><h2 style="color:#0f172a">New portfolio message</h2><p><strong>From:</strong> ${escapeHtml(empresa)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p style="white-space:pre-wrap"><strong>Message:</strong><br>${escapeHtml(message)}</p></div>`,
     });
 
-    if (error) {
-      console.error("❌ Error sending:", error);
-      return NextResponse.json({ error }, { status: 500 });
-    }
-
-    return NextResponse.json({
-      message: "✅ Message sent successfully",
-      data,
-    });
-  } catch (err: any) {
-    console.error("❌ Unexpected error:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    if (error) return NextResponse.json({ error: "Unable to send message." }, { status: 502 });
+    return NextResponse.json({ message: "Message sent successfully.", data });
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 }

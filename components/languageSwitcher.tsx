@@ -1,74 +1,67 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useTransition } from "react";
 import { ModeToggle } from "./ModdeToggle";
-const locales = ["en", "es"];
+
+const locales = ["en", "es"] as const;
 
 export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
-  const currentLocale = pathname.split("/")[1];
-
-  const changeLocale = (newLocale: string) => {
-    if (newLocale === currentLocale) return;
-
-    // Guarda posición de scroll y preferencias
-    const scrollY = window.scrollY;
-    localStorage.setItem("locale", newLocale);
-    localStorage.setItem("scrollY", scrollY.toString());
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/`;
-
-    // Cambia de idioma sin perder scroll
-    const segments = pathname.split("/");
-    segments[1] = newLocale;
-    const newPathname = segments.join("/") || "/";
-
-    router.replace(newPathname); // evita transición innecesaria
-  };
+  const currentLocale = pathname.split("/")[1] || "en";
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    const savedLocale = localStorage.getItem("locale");
-    const savedScrollY = localStorage.getItem("scrollY");
-
-    // Redirigir si el idioma no es válido
-    if (savedLocale && !locales.includes(currentLocale)) {
-      router.replace(`/${savedLocale}${pathname}`);
+    for (const locale of locales) {
+      const segments = pathname.split("/");
+      segments[1] = locale;
+      router.prefetch(segments.join("/") || `/${locale}`);
     }
+  }, [pathname, router]);
 
-    // Restaurar scroll sin parpadeos
-    if (savedScrollY) {
-      requestAnimationFrame(() => {
-        window.scrollTo(0, parseInt(savedScrollY));
-        localStorage.removeItem("scrollY");
-      });
-    }
+  useEffect(() => {
+    const cover = document.getElementById("locale-transition-cover");
+    const firstFrame = requestAnimationFrame(() => {
+      requestAnimationFrame(() => cover?.setAttribute("data-active", "false"));
+    });
+    return () => cancelAnimationFrame(firstFrame);
   }, [pathname]);
 
+  const changeLocale = (newLocale: (typeof locales)[number]) => {
+    if (newLocale === currentLocale || isPending) return;
+
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    const nextPath = segments.join("/") || `/${newLocale}`;
+
+    document.getElementById("locale-transition-cover")?.setAttribute("data-active", "true");
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; samesite=lax`;
+
+    startTransition(() => {
+      router.replace(nextPath, { scroll: false });
+    });
+  };
+
   return (
-    <nav className="fixed z-50 top-4 right-4 p-2 bg-black backdrop-blur-md border border-gray-200 dark:border-zinc-700 px-2 py-1 shadow-lg transition-all ">
-      <div className="flex items-center gap-1">
-        <div>
+      <nav aria-label="Language and appearance" className="fixed right-3 top-3 z-50 rounded-full border border-white/15 bg-slate-950/90 p-1.5 text-white shadow-xl backdrop-blur-md sm:right-6 sm:top-6">
+        <div className="flex items-center gap-1">
           <ModeToggle />
+          <span className="mx-0.5 h-5 w-px bg-white/15" aria-hidden="true" />
+          {locales.map((locale) => (
+            <button
+              key={locale}
+              type="button"
+              onClick={() => changeLocale(locale)}
+              disabled={locale === currentLocale || isPending}
+              aria-current={locale === currentLocale ? "page" : undefined}
+              aria-label={`Switch to ${locale === "en" ? "English" : "Español"}`}
+              className={`focus-ring min-h-9 min-w-10 rounded-full px-2.5 text-xs font-bold tracking-wide transition sm:px-3 ${locale === currentLocale ? "bg-amber-400 text-slate-950" : "text-slate-300 hover:bg-white/10 hover:text-white"}`}
+            >
+              {locale.toUpperCase()}
+            </button>
+          ))}
         </div>
-        {locales.map((locale) => (
-          <button
-            key={locale}
-            onClick={() => changeLocale(locale)}
-            disabled={locale === currentLocale}
-            className={`px-3 py-1 text-sm transition-all duration-200 focus:outline-none 
-              ${
-                locale === currentLocale
-                  ? "bg-orange-500 dark:text-black text-white"
-                  : "text-gray-200 hover:bg-gray-700"
-              }
-              disabled:cursor-not-allowed disabled:opacity-70`}
-            title={`Switch to ${locale.toUpperCase()}`}
-          >
-            {locale.toUpperCase()}
-          </button>
-        ))}
-      </div>
-    </nav>
+      </nav>
   );
 }

@@ -1,50 +1,48 @@
 "use client";
+
 import { useTranslations } from "next-intl";
-import { FaUserTie } from "react-icons/fa";
+import { FaCode, FaUserTie } from "react-icons/fa";
 import LanguageSwitcher from "@/components/languageSwitcher";
 import CvModal from "@/components/CvModal";
 
 export default function Header() {
   const t = useTranslations("Profile");
-  const tAva = useTranslations("Available");
+  const tAvailable = useTranslations("Available");
 
   return (
-    <header className="relative text-center py-12 px-4 sm:py-16 sm:px-12 bg-slate-800 dark:bg-slate-900 text-white dark:text-yellow-400">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600" />
+    <header className="relative isolate overflow-hidden bg-slate-900 px-4 pb-14 pt-24 text-center text-white sm:px-12 sm:pb-20 sm:pt-20 dark:bg-slate-950">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-700 via-amber-400 to-amber-700" />
+      <div className="absolute -left-24 top-16 h-56 w-56 rounded-full bg-amber-500/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-orange-500/10 blur-3xl" />
 
-      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-        <LanguageSwitcher />
-      </div>
+      <LanguageSwitcher />
 
-      <div className="relative flex flex-col items-center mb-3">
-        <div className="relative flex flex-col items-center">
-          <div className="profile-img w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 sm:mb-8 bg-slate-700 dark:bg-slate-800 flex items-center justify-center text-5xl sm:text-6xl text-yellow-500 dark:text-yellow-400 border-4 border-yellow-500 dark:border-yellow-400 shadow-lg">
-            <FaUserTie />
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center">
+        <div className="relative mb-7">
+          <div className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-amber-400 bg-slate-800 text-5xl text-amber-400 shadow-2xl shadow-black/30 sm:h-40 sm:w-40 sm:text-6xl">
+            <FaUserTie aria-hidden="true" />
           </div>
-
-          <div className="relative mt-2 sm:absolute sm:top-4 sm:-right-22 sm:translate-x-[10%] sm:mt-0">
-            <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#FFC107_0%,#FF5722_50%,#FFC107_100%)]"></span>
-              <div className="inline-flex items-center justify-center px-3 py-1 text-sm bg-gray-800 rounded-full dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
-                {tAva("ava")}
-              </div>
+          <span className="absolute -bottom-2 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-amber-400/40 bg-slate-950/90 px-3 py-1.5 text-xs font-medium text-slate-100 shadow-lg backdrop-blur sm:left-auto sm:right-0 sm:translate-x-1/3">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-          </div>
+            {tAvailable("ava")}
+          </span>
         </div>
+
+        <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-amber-400 sm:text-sm">
+          <FaCode aria-hidden="true" />
+          BootsDev-X
+        </div>
+        <h1 className="signature-name text-balance text-4xl sm:text-6xl md:text-7xl">
+          Johanny A. Rodriguez
+        </h1>
+        <p className="mt-4 text-base font-medium tracking-wide text-amber-400 sm:text-xl">
+          {t("Developer")}
+        </p>
+        <CvModal />
       </div>
-
-      {/* Nombre */}
-      <h1 className="name text-3xl sm:text-5xl mb-2 text-white dark:text-yellow-300 tracking-wide">
-        Johanny A. Rodriguez
-      </h1>
-
-      <p className="title text-lg sm:text-xl text-yellow-500 dark:text-yellow-400 font-light italic tracking-wide">
-        {t("Developer")}
-      </p>
-
-      {/* Botón de Descargar CV */}
-
-      <CvModal />
     </header>
   );
 }
