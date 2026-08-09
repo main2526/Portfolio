@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { FaCode, FaUserTie } from "react-icons/fa";
-import LanguageSwitcher from "@/components/languageSwitcher";
 import CvModal from "@/components/CvModal";
 
 export default function Header() {
@@ -14,8 +13,6 @@ export default function Header() {
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-700 via-amber-400 to-amber-700" />
       <div className="absolute -left-24 top-16 h-56 w-56 rounded-full bg-amber-500/10 blur-3xl" />
       <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-orange-500/10 blur-3xl" />
-
-      <LanguageSwitcher />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center">
         <div className="relative mb-7">
