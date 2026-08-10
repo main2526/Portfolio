@@ -25,8 +25,8 @@
   "TitleP": { "Pr": "Featured projects" },
   "Projects": {
     "swiftStake": { "name": "Swift Stake", "description": "Swift Stake is a fast, secure staking platform that enables users to participate in decentralized finance (DeFi) protocols. The project integrates real-time APIs to provide current opportunities and rewards. With a focus on user experience and security, it simplifies earning passive income through blockchain technology." },
-    "landingTurtle": { "name": "Landing Turtle", "description": "Landing Turtle is an animated, visually engaging landing page built to showcase modern web design techniques. Using Next.js, Tailwind CSS, and Framer Motion, it demonstrates smooth animations, responsive layouts, and creative interface elements. It works as a template for startups and personal portfolios seeking a memorable first impression." },
-    "chatbotAI": { "name": "Chatbot AI", "description": "Chatbot AI is an intelligent conversational assistant powered by the DeepSeek API and Next.js. It can answer questions, provide recommendations, and automate tasks. Its focus on natural-language understanding and a friendly interface brings the power of artificial intelligence to everyday interactions." }
+    "restaurantFoodDelivery": { "name": "Restaurant Food Delivery", "description": "Restaurant Food Delivery is a comprehensive food delivery platform that connects customers with local restaurants. Built with modern web technologies, it offers a seamless ordering experience with real-time tracking and a user-friendly interface." },
+    "chatbotAI": { "name": "Chatbot AI", "description": "Chatbot AI is an intelligent conversational assistant powered by the DeepSeek API and Next.js. It can answer questions, provide recommendations, and automate tasks. Its focus on natural-language understanding and a friendly interface brings the power of artificial intelligence to everyday interactions.", "status": "In development" }
   },
   "Watch": { "Preview": "Live demo", "Github": "View code" },
   "Con": { "v": "Let's talk" },
