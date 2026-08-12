@@ -1,54 +1,15 @@
 {
-  "Profile": {
-    "Developer": "Full Stack Developer",
-    "DownloadCV": "View résumé",
-    "CVTitle": "Johanny Rodriguez's résumé",
-    "DownloadFile": "Download résumé",
-    "Close": "Close"
-  },
+  "Profile": { "Developer": "Full Stack Developer", "DownloadCV": "View résumé", "CVTitle": "Johanny Rodriguez's résumé", "DownloadFile": "Download résumé", "Close": "Close" },
   "Available": { "ava": "Available for work" },
-  "AboutMe": {
-    "About": "About me",
-    "text": "I am a Full Stack developer who turns ideas into fast, clear, and intuitive web experiences. I like to build up products from scratch, hunt down bugs, and clean up code until every detail falls into place. With over two years of experience, I keep learning, building, and solving problems without sacrificing design or performance.",
-    "pros": "If production drops dead, I follow the logs, bring it back, and move on; the server can keep the drama."
-  },
-  "Skills": {
-    "title": "Technical skills",
-    "all": "All",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "tool": "Tools",
-    "filterLabel": "Filter skills",
-    "scrollLeft": "View previous skills",
-    "scrollRight": "View more skills"
-  },
-  "TitleP": { "Pr": "Featured projects" },
+  "AboutMe": { "About": "About me", "text": "I am a Full Stack developer who turns ideas into fast, clear, and intuitive web experiences. I like to build products from scratch, hunt down bugs, and clean up code until every detail falls into place. With over two years of experience, I keep learning, building, and solving problems without sacrificing design or performance.", "pros": "If production drops dead, I follow the logs, bring it back, and move on; the server can keep the drama." },
+  "Skills": { "title": "Technical skills", "all": "All", "frontend": "Frontend", "backend": "Backend", "tool": "Tools", "filterLabel": "Filter skills", "scrollLeft": "View previous skills", "scrollRight": "View more skills" },
+  "TitleP": { "Pr": "Pinned" },
   "Projects": {
-    "swiftStake": { "name": "Swift Stake", "description": "Swift Stake is a fast, secure staking platform that enables users to participate in decentralized finance (DeFi) protocols. The project integrates real-time APIs to provide current opportunities and rewards. With a focus on user experience and security, it simplifies earning passive income through blockchain technology." },
-    "restaurantFoodDelivery": { "name": "Restaurant Food Delivery", "description": "Restaurant Food Delivery is a comprehensive food delivery platform that connects customers with local restaurants. Built with modern web technologies, it offers a seamless ordering experience with real-time tracking and a user-friendly interface." },
-    "chatbotAI": { "name": "Chatbot AI", "description": "Chatbot AI is an intelligent conversational assistant powered by the DeepSeek API and Next.js. It can answer questions, provide recommendations, and automate tasks. Its focus on natural-language understanding and a friendly interface brings the power of artificial intelligence to everyday interactions.", "status": "In development" }
+    "swiftStake": { "name": "SwiftStake", "description": "A fast, secure staking platform that connects users with decentralized finance protocols and real-time reward opportunities." },
+    "restaurantFoodDelivery": { "name": "tmeal-restaurant-delicius", "description": "A modern food-delivery platform connecting customers with local restaurants through a simple ordering experience." },
+    "chatbotAI": { "name": "chatbot-api-key", "description": "An intelligent conversational assistant powered by the DeepSeek API and Next.js.", "status": "In development" }
   },
-  "Watch": { "Preview": "Live demo", "Github": "View code" },
-  "Con": { "v": "Let's talk" },
-  "ContactMe": {
-    "Eyebrow": "Open to possibilities",
-    "IntroTitle": "Have an idea? Let's make it real.",
-    "IntroText": "Tell me a little about what you are building. I will get back to you with thoughtful next steps.",
-    "Connect": "Connect with me",
-    "LinkedIn": "Professional LinkedIn",
-    "GitHub": "GitHub profile",
-    "WhatsApp": "WhatsApp",
-    "SendMe": "Send me a message",
-    "Name": "Name or business",
-    "YourName": "Your name or business",
-    "YourEmail": "you@email.com",
-    "Subject": "Subject",
-    "SubjectInput": "How can I help?",
-    "Message": "Message",
-    "MessageInput": "Tell me about your project",
-    "SendMessage": "Send message",
-    "SendIngMessage": "Sending…",
-    "SendSuccess": "Message sent. I'll get back to you soon.",
-    "SendError": "The message could not be sent. Please try again."
-  }
+  "Watch": { "Preview": "Live demo", "Github": "Code" },
+  "Con": { "v": "Contact" },
+  "ContactMe": { "LinkedIn": "LinkedIn", "GitHub": "GitHub", "WhatsApp": "WhatsApp", "SendMe": "Send me a message", "Name": "Name or business", "YourName": "Your name or business", "YourEmail": "you@email.com", "Subject": "Subject", "SubjectInput": "How can I help?", "Message": "Message", "MessageInput": "Tell me about your project", "SendMessage": "Send message", "SendIngMessage": "Sending…", "SendSuccess": "Message sent. I'll get back to you soon.", "SendError": "The message could not be sent. Please try again." }
 }

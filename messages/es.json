@@ -1,54 +1,15 @@
 {
-  "Profile": {
-    "Developer": "Desarrollador Full Stack",
-    "DownloadCV": "Ver currículum",
-    "CVTitle": "Currículum de Johanny Rodriguez",
-    "DownloadFile": "Descargar currículum",
-    "Close": "Cerrar"
-  },
+  "Profile": { "Developer": "Desarrollador Full Stack", "DownloadCV": "Ver currículum", "CVTitle": "Currículum de Johanny Rodriguez", "DownloadFile": "Descargar currículum", "Close": "Cerrar" },
   "Available": { "ava": "Disponible para trabajar" },
-  "AboutMe": {
-    "About": "Sobre mí",
-    "text": "Soy desarrollador Full Stack y convierto ideas en experiencias web rápidas, claras y fáciles de usar. Me gusta build up productos desde cero, hunt down bugs y clean up código hasta que cada detalle encaja. Llevo más de dos años aprendiendo, creando y resolviendo problemas sin sacrificar diseño ni rendimiento.",
-    "pros": "Si producción drops dead, sigo el log, la revivo y move on; el drama se lo dejo al servidor."
-  },
-  "Skills": {
-    "title": "Competencias técnicas",
-    "all": "Todas",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "tool": "Herramientas",
-    "filterLabel": "Filtrar competencias",
-    "scrollLeft": "Ver competencias anteriores",
-    "scrollRight": "Ver más competencias"
-  },
-  "TitleP": { "Pr": "Proyectos destacados" },
+  "AboutMe": { "About": "Sobre mí", "text": "Soy desarrollador Full Stack y convierto ideas en experiencias web rápidas, claras y fáciles de usar. Me gusta crear productos desde cero, encontrar errores y limpiar código hasta que cada detalle encaja. Llevo más de dos años aprendiendo, creando y resolviendo problemas sin sacrificar diseño ni rendimiento.", "pros": "Si producción se cae, sigo el registro, la revivo y continúo; el drama se lo dejo al servidor." },
+  "Skills": { "title": "Competencias técnicas", "all": "Todas", "frontend": "Frontend", "backend": "Backend", "tool": "Herramientas", "filterLabel": "Filtrar competencias", "scrollLeft": "Ver competencias anteriores", "scrollRight": "Ver más competencias" },
+  "TitleP": { "Pr": "Destacados" },
   "Projects": {
-    "swiftStake": { "name": "Swift Stake", "description": "Swift Stake es una plataforma de staking rápida y segura que permite a los usuarios participar en protocolos de finanzas descentralizadas (DeFi). El proyecto integra APIs en tiempo real para ofrecer oportunidades y recompensas actualizadas. Con un enfoque en la experiencia de usuario y la seguridad, simplifica la obtención de ingresos pasivos mediante tecnología blockchain." },
-    "restaurantFoodDelivery": { "name": "Entrega de comida de restaurantes", "description": "Restaurant Food Delivery es una plataforma integral de entrega de comida que conecta a los clientes con restaurantes locales. Creada con tecnologías web modernas, ofrece una experiencia de pedido fluida, seguimiento en tiempo real y una interfaz fácil de usar." },
-    "chatbotAI": { "name": "Chatbot AI", "description": "Chatbot AI es un asistente conversacional inteligente impulsado por la API de DeepSeek y Next.js. Puede responder preguntas, proporcionar recomendaciones y automatizar tareas. Su enfoque en la comprensión del lenguaje natural y una interfaz fácil de usar lleva el poder de la inteligencia artificial a las interacciones cotidianas.", "status": "En desarrollo" }
+    "swiftStake": { "name": "SwiftStake", "description": "Una plataforma de staking rápida y segura que conecta usuarios con protocolos DeFi y oportunidades de recompensa en tiempo real." },
+    "restaurantFoodDelivery": { "name": "tmeal-restaurant-delicius", "description": "Una plataforma moderna de entrega de comida que conecta clientes con restaurantes locales mediante una experiencia de pedido sencilla." },
+    "chatbotAI": { "name": "chatbot-api-key", "description": "Un asistente conversacional inteligente impulsado por la API de DeepSeek y Next.js.", "status": "En desarrollo" }
   },
-  "Watch": { "Preview": "Ver demo", "Github": "Ver código" },
-  "Con": { "v": "Hablemos" },
-  "ContactMe": {
-    "Eyebrow": "Abierto a nuevas ideas",
-    "IntroTitle": "¿Tienes una idea? Hagámosla realidad.",
-    "IntroText": "Cuéntame un poco sobre lo que quieres construir. Te responderé con próximos pasos claros y pensados para tu proyecto.",
-    "Connect": "Conecta conmigo",
-    "LinkedIn": "LinkedIn profesional",
-    "GitHub": "Perfil de GitHub",
-    "WhatsApp": "WhatsApp",
-    "Name": "Nombre o empresa",
-    "SendMe": "Envíame un mensaje",
-    "YourName": "Tu nombre o empresa",
-    "YourEmail": "tu@email.com",
-    "Subject": "Asunto",
-    "SubjectInput": "¿En qué puedo ayudarte?",
-    "Message": "Mensaje",
-    "MessageInput": "Cuéntame sobre tu proyecto",
-    "SendMessage": "Enviar mensaje",
-    "SendIngMessage": "Enviando…",
-    "SendSuccess": "Mensaje enviado. Te responderé pronto.",
-    "SendError": "No se pudo enviar el mensaje. Inténtalo de nuevo."
-  }
+  "Watch": { "Preview": "Demo", "Github": "Código" },
+  "Con": { "v": "Contacto" },
+  "ContactMe": { "LinkedIn": "LinkedIn", "GitHub": "GitHub", "WhatsApp": "WhatsApp", "SendMe": "Envíame un mensaje", "Name": "Nombre o empresa", "YourName": "Tu nombre o empresa", "YourEmail": "tu@email.com", "Subject": "Asunto", "SubjectInput": "¿En qué puedo ayudarte?", "Message": "Mensaje", "MessageInput": "Cuéntame sobre tu proyecto", "SendMessage": "Enviar mensaje", "SendIngMessage": "Enviando…", "SendSuccess": "Mensaje enviado. Te responderé pronto.", "SendError": "No se pudo enviar el mensaje. Inténtalo de nuevo." }
 }

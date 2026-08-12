@@ -2,18 +2,12 @@ import { useTranslations } from "next-intl";
 
 export default function About() {
   const t = useTranslations("AboutMe");
-
   return (
-    <section aria-labelledby="about-title" className="mx-auto max-w-4xl">
-      <h2 id="about-title" className="section-heading">
-        {t("About")}
-      </h2>
-      <p className="mx-auto mt-9 max-w-3xl text-pretty text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
-        {t("text")}
-      </p>
-      <blockquote className="mx-auto mt-9 max-w-2xl border-l-2 border-amber-400 bg-amber-50/70 px-5 py-4 text-center text-base italic leading-7 text-slate-600 sm:text-lg dark:bg-amber-400/5 dark:text-slate-300">
-        “{t("pros")}”
-      </blockquote>
+    <section aria-labelledby="about-title" className="surface-card p-6">
+      <div className="mb-5 border-b border-[#d8dee4] pb-2 text-xs text-[#656d76] dark:border-[#21262d] dark:text-[#8b949e]">main2526 / README.md</div>
+      <h2 id="about-title" className="border-b border-[#d8dee4] pb-2 text-2xl font-semibold dark:border-[#21262d]">👋 {t("About")}</h2>
+      <p className="mt-4 text-base leading-7">{t("text")}</p>
+      <blockquote className="mt-4 border-l-4 border-[#d0d7de] pl-4 leading-6 text-[#656d76] dark:border-[#30363d] dark:text-[#8b949e]">“{t("pros")}”</blockquote>
     </section>
   );
 }
