@@ -16,13 +16,13 @@ export default function Projects() {
   const watch = useTranslations("Watch");
   return (
     <section aria-labelledby="projects-title">
-      <div className="mb-2 flex items-center justify-between"><h2 id="projects-title" className="text-base font-normal">{title("Pr")}</h2><a href="https://github.com/main2526?tab=repositories" target="_blank" rel="noreferrer" className="text-xs text-[#0969da] hover:underline dark:text-[#2f81f7]">View all</a></div>
+      <div className="mb-2 flex items-center justify-between"><h2 id="projects-title" className="text-base font-normal">{title("Pr")}</h2><a href="https://github.com/main2526?tab=repositories" target="_blank" rel="noreferrer" className="text-xs text-[#0969da] hover:underline dark:text-[#2f81f7]">{watch("ViewAll")}</a></div>
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
           <article key={project.key} className="surface-card flex min-h-40 flex-col p-4">
             <div className="flex items-start justify-between gap-3">
               <a href={project.github} target="_blank" rel="noreferrer" className="font-semibold text-[#0969da] hover:underline dark:text-[#2f81f7]">{t(`${project.key}.name`)}</a>
-              <span className="rounded-full border border-[#d0d7de] px-2 py-0.5 text-xs text-[#656d76] dark:border-[#30363d] dark:text-[#8b949e]">Public</span>
+              <span className="rounded-full border border-[#d0d7de] px-2 py-0.5 text-xs text-[#656d76] dark:border-[#30363d] dark:text-[#8b949e]">{watch("Public")}</span>
             </div>
             <p className="mt-3 line-clamp-3 text-xs leading-5 text-[#656d76] dark:text-[#8b949e]">{t(`${project.key}.description`)}</p>
             <div className="mt-auto flex flex-wrap items-center gap-4 pt-4 text-xs text-[#656d76] dark:text-[#8b949e]">

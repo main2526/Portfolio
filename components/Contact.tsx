@@ -35,8 +35,8 @@ export default function Contact() {
       <h2 id="contact-title" className="section-heading">{heading("v")}</h2>
       <div className="mt-4 grid overflow-hidden rounded-md border border-[#d0d7de] md:grid-cols-[240px_1fr] dark:border-[#30363d]">
         <div className="border-b border-[#d0d7de] bg-[#f6f8fa] p-5 md:border-b-0 md:border-r dark:border-[#30363d] dark:bg-[#161b22]">
-          <h3 className="font-semibold">{es ? "Abierto a nuevas ideas" : "Open to possibilities"}</h3>
-          <p className="mt-2 text-sm leading-6 text-[#656d76] dark:text-[#8b949e]">{es ? "Cuéntame qué quieres construir y te responderé con próximos pasos claros." : "Tell me what you are building and I will reply with clear next steps."}</p>
+          <h3 className="font-semibold">{es ? "Hablemos con calma" : "Let's talk it through"}</h3>
+          <p className="mt-2 text-sm leading-6 text-[#656d76] dark:text-[#8b949e]">{es ? "Si tienes una idea, un reto o simplemente una pregunta, escríbeme. Me encantará leerte y descubrir cómo puedo aportar." : "If you have an idea, a challenge, or simply a question, write to me. I would be glad to hear from you and explore how I can help."}</p>
           <div className="mt-4 space-y-2">{links.map(({ icon: Icon, title, link }) => <a key={title} href={link} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-[#0969da] hover:underline dark:text-[#2f81f7]"><Icon />{t(title)}</a>)}</div>
         </div>
         <form onSubmit={submit} className="space-y-4 p-5">

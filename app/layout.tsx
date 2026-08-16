@@ -4,12 +4,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BootsDev-X | Full Stack Developer",
-  description: "Portfolio of Johanny A. Rodriguez, a Full Stack developer specializing in React, Next.js, Node.js, and modern web technologies.",
-  keywords: ["Full Stack developer", "React", "Next.js", "TypeScript", "Node.js", "portfolio"],
+  title: "BootsDev-X | Johanny A. Rodriguez",
+  description: "Portfolio of Johanny A. Rodriguez: thoughtful, useful, and human web products built with modern technologies.",
+  keywords: ["software engineer", "React", "Next.js", "TypeScript", "Node.js", "portfolio"],
   authors: [{ name: "Johanny A. Rodriguez" }],
   openGraph: {
-    title: "Johanny A. Rodriguez | Full Stack Developer",
+    title: "Johanny A. Rodriguez | Software Engineer",
     description: "Modern web experiences built with care, performance, and intuitive design.",
     type: "website",
   },

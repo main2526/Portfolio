@@ -1,15 +1,15 @@
 {
-  "Profile": { "Developer": "Full Stack Developer", "DownloadCV": "View résumé", "CVTitle": "Johanny Rodriguez's résumé", "DownloadFile": "Download résumé", "Close": "Close" },
+  "Profile": { "Developer": "Thoughtful products for the web", "Role": "Software engineering", "Contact": "Contact", "DownloadCV": "View résumé", "CVTitle": "Johanny Rodriguez's résumé", "DownloadFile": "Download résumé", "Close": "Close" },
   "Available": { "ava": "Available for work" },
-  "AboutMe": { "About": "About me", "text": "I am a Full Stack developer who turns ideas into fast, clear, and intuitive web experiences. I like to build products from scratch, hunt down bugs, and clean up code until every detail falls into place. With over two years of experience, I keep learning, building, and solving problems without sacrificing design or performance.", "pros": "If production drops dead, I follow the logs, bring it back, and move on; the server can keep the drama." },
+  "AboutMe": { "About": "A little about me", "text": "I enjoy taking an idea that still lives among notes, questions, and coffee, then turning it into something people can open and understand without effort. I care as much about shaping the experience as I do about solving what happens behind it: listening, testing, getting things wrong, and refining the small details that make a product feel right.", "text2": "For more than two years, I have built to learn and learned to build. Every challenge has taught me something different, but they have all confirmed the same thing: good technology is not here to impress people; it is here to help, connect, and make someone's day a little easier.", "pros": "There is a person behind every screen. That is why I do not consider the work finished when it runs, but when it feels clear, useful, and human." },
   "Skills": { "title": "Technical skills", "all": "All", "frontend": "Frontend", "backend": "Backend", "tool": "Tools", "filterLabel": "Filter skills", "scrollLeft": "View previous skills", "scrollRight": "View more skills" },
-  "TitleP": { "Pr": "Pinned" },
+  "TitleP": { "Pr": "Selected projects" },
   "Projects": {
-    "swiftStake": { "name": "SwiftStake", "description": "A fast, secure staking platform that connects users with decentralized finance protocols and real-time reward opportunities." },
-    "restaurantFoodDelivery": { "name": "tmeal-restaurant-delicius", "description": "A modern food-delivery platform connecting customers with local restaurants through a simple ordering experience." },
-    "chatbotAI": { "name": "chatbot-api-key", "description": "An intelligent conversational assistant powered by the DeepSeek API and Next.js.", "status": "In development" }
+    "swiftStake": { "name": "SwiftStake", "description": "Brings staking and DeFi protocols closer to people through a fast, secure experience with real-time rewards." },
+    "restaurantFoodDelivery": { "name": "tmeal-restaurant-delicius", "description": "Makes ordering local food simple, from choosing a restaurant to confirming the order." },
+    "chatbotAI": { "name": "chatbot-api-key", "description": "A natural AI conversation experience built with the DeepSeek API and Next.js.", "status": "In development" }
   },
-  "Watch": { "Preview": "Live demo", "Github": "Code" },
+  "Watch": { "Preview": "Live demo", "Github": "Code", "ViewAll": "View all", "Public": "Public" },
   "Con": { "v": "Contact" },
   "ContactMe": { "LinkedIn": "LinkedIn", "GitHub": "GitHub", "WhatsApp": "WhatsApp", "SendMe": "Send me a message", "Name": "Name or business", "YourName": "Your name or business", "YourEmail": "you@email.com", "Subject": "Subject", "SubjectInput": "How can I help?", "Message": "Message", "MessageInput": "Tell me about your project", "SendMessage": "Send message", "SendIngMessage": "Sending…", "SendSuccess": "Message sent. I'll get back to you soon.", "SendError": "The message could not be sent. Please try again." }
 }

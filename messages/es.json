@@ -1,15 +1,15 @@
 {
-  "Profile": { "Developer": "Desarrollador Full Stack", "DownloadCV": "Ver currículum", "CVTitle": "Currículum de Johanny Rodriguez", "DownloadFile": "Descargar currículum", "Close": "Cerrar" },
+  "Profile": { "Developer": "Productos web con intención", "Role": "Ingeniería de software", "Contact": "Contacto", "DownloadCV": "Ver currículum", "CVTitle": "Currículum de Johanny Rodriguez", "DownloadFile": "Descargar currículum", "Close": "Cerrar" },
   "Available": { "ava": "Disponible para trabajar" },
-  "AboutMe": { "About": "Sobre mí", "text": "Soy desarrollador Full Stack y convierto ideas en experiencias web rápidas, claras y fáciles de usar. Me gusta crear productos desde cero, encontrar errores y limpiar código hasta que cada detalle encaja. Llevo más de dos años aprendiendo, creando y resolviendo problemas sin sacrificar diseño ni rendimiento.", "pros": "Si producción se cae, sigo el registro, la revivo y continúo; el drama se lo dejo al servidor." },
+  "AboutMe": { "About": "Un poco sobre mí", "text": "Me gusta tomar una idea que todavía vive entre notas, preguntas y café, y convertirla en algo que una persona pueda abrir y entender sin esfuerzo. Disfruto tanto imaginar la experiencia como resolver lo que ocurre detrás de ella: escuchar, probar, equivocarme y cuidar esos pequeños detalles que hacen que un producto se sienta bien.", "text2": "Desde hace más de dos años construyo para aprender y aprendo para construir. Cada reto me ha enseñado algo distinto, pero todos me han confirmado lo mismo: la buena tecnología no busca impresionar; busca ayudar, acercar y hacerle el día un poco más fácil a alguien.", "pros": "Detrás de cada pantalla hay una persona. Por eso no doy por terminado un trabajo cuando funciona, sino cuando se siente claro, útil y humano." },
   "Skills": { "title": "Competencias técnicas", "all": "Todas", "frontend": "Frontend", "backend": "Backend", "tool": "Herramientas", "filterLabel": "Filtrar competencias", "scrollLeft": "Ver competencias anteriores", "scrollRight": "Ver más competencias" },
-  "TitleP": { "Pr": "Destacados" },
+  "TitleP": { "Pr": "Proyectos seleccionados" },
   "Projects": {
-    "swiftStake": { "name": "SwiftStake", "description": "Una plataforma de staking rápida y segura que conecta usuarios con protocolos DeFi y oportunidades de recompensa en tiempo real." },
-    "restaurantFoodDelivery": { "name": "tmeal-restaurant-delicius", "description": "Una plataforma moderna de entrega de comida que conecta clientes con restaurantes locales mediante una experiencia de pedido sencilla." },
-    "chatbotAI": { "name": "chatbot-api-key", "description": "Un asistente conversacional inteligente impulsado por la API de DeepSeek y Next.js.", "status": "En desarrollo" }
+    "swiftStake": { "name": "SwiftStake", "description": "Acerca el staking y los protocolos DeFi a las personas con una experiencia ágil, segura y recompensas visibles en tiempo real." },
+    "restaurantFoodDelivery": { "name": "tmeal-restaurant-delicius", "description": "Simplifica el pedido de comida local con un recorrido directo, desde elegir el restaurante hasta confirmar la orden." },
+    "chatbotAI": { "name": "chatbot-api-key", "description": "Una conversación natural con inteligencia artificial, creada con la API de DeepSeek y Next.js.", "status": "En desarrollo" }
   },
-  "Watch": { "Preview": "Demo", "Github": "Código" },
+  "Watch": { "Preview": "Demo", "Github": "Código", "ViewAll": "Ver todos", "Public": "Público" },
   "Con": { "v": "Contacto" },
   "ContactMe": { "LinkedIn": "LinkedIn", "GitHub": "GitHub", "WhatsApp": "WhatsApp", "SendMe": "Envíame un mensaje", "Name": "Nombre o empresa", "YourName": "Tu nombre o empresa", "YourEmail": "tu@email.com", "Subject": "Asunto", "SubjectInput": "¿En qué puedo ayudarte?", "Message": "Mensaje", "MessageInput": "Cuéntame sobre tu proyecto", "SendMessage": "Enviar mensaje", "SendIngMessage": "Enviando…", "SendSuccess": "Mensaje enviado. Te responderé pronto.", "SendError": "No se pudo enviar el mensaje. Inténtalo de nuevo." }
 }
